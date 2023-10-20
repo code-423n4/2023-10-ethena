@@ -151,7 +151,11 @@ _Note for C4 wardens: Anything included in the 4naly3er **or** the automated fin
 
 | Contract | SLOC | Purpose | Libraries used |  
 | ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/sample.sol](https://github.com/code-423n4/repo-name/blob/contracts/folder/sample.sol) | 123 | This contract does XYZ | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
+| [USDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDe.sol) | 24 | USDe token stablecoin contract that grants another address the ability to mint USDe | [`@openzeppelin/ERC20Burnable.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Burnable.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/Ownable2Step.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable2Step.sol)|
+| [EthenaMinting.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/EthenaMinting.sol) | 295 | The contract where minting and redemption occurs. USDe.sol grants this contract the ability to mint USDe | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) |
+| [StakedUSDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDe.sol) | 130 | Extension of ERC4626. Users stake USDe to receive stUSDe which increases in value as Ethena deposits protocol yield here | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/ERC4626.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC4626.sol) |
+| [StakedUSDeV2.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDeV2.sol) | 130 | Extends StakedUSDe, adds a redemption cooldown.  | |
+| [USDeSilo.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDeSilo.sol) | 20 | Contract to temporarily hold USDe during redemption cooldown  | |
 
 ## Out of scope
 
@@ -175,6 +179,7 @@ _Note for C4 wardens: Anything included in the 4naly3er **or** the automated fin
 ## Main invariants
 *Describe the project's main invariants (properties that should NEVER EVER be broken).*
 
+
 ## Scoping Details 
 [ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
@@ -192,10 +197,10 @@ _Note for C4 wardens: Anything included in the 4naly3er **or** the automated fin
 - Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?: False  
 - Please describe required context: N/A
 - Does it use an oracle?: No  
-- Describe any novel or unique curve logic or mathematical models your code uses: EIP-712, ERC-4626 
-- Is this either a fork of or an alternate implementation of another project?: False   
-- Does it use a side-chain?: False
-- Describe any specific areas you would like addressed: Any attack that results in misplacement of funds.
+- Describe any novel or unique curve logic or mathematical models your code uses:  None
+- Is this either a fork of or an alternate implementation of another project?: No   
+- Does it use a side-chain?: No, ethereum mainnet only
+- Describe any specific areas you would like addressed: Any attack that results in misplacement of funds or denial of service.
 ```
 
 # Tests
