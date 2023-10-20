@@ -156,6 +156,7 @@ _Note for C4 wardens: Anything included in the 4naly3er **or** the automated fin
 | [StakedUSDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDe.sol) | 130 | Extension of ERC4626. Users stake USDe to receive stUSDe which increases in value as Ethena deposits protocol yield here | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/ERC4626.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC4626.sol) |
 | [StakedUSDeV2.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDeV2.sol) | 76 | Extends StakedUSDe, adds a redemption cooldown.  | |
 | [USDeSilo.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDeSilo.sol) | 20 | Contract to temporarily hold USDe during redemption cooldown  | |
+| [SingleAdminAccessControl.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/SingleAdminAccessControl.sol) | 43 | EthenaMinting uses SingleAdminAccessControl rather than the standard AccessControl  | |
 
 ## Out of scope
 
@@ -164,14 +165,40 @@ _Note for C4 wardens: Anything included in the 4naly3er **or** the automated fin
 # Additional Context
 
 - [ ] Describe any novel or unique curve logic or mathematical models implemented in the contracts
+- [ ] 
+None
+
 - [ ] Please list specific ERC20 that your protocol is anticipated to interact with. Could be "any" (literally anything, fee on transfer tokens, ERC777 tokens and so forth) or a list of tokens you envision using on launch.
+
+stETH and our own USDe stablecoin.
+
 - [ ] Please list specific ERC721 that your protocol is anticipated to interact with.
+
+Only our own ERC712 signed order in EthenaMinting.sol
+
 - [ ] Which blockchains will this code be deployed to, and are considered in scope for this audit?
+
+Ethereum mainnet
+  
 - [ ] Please list all trusted roles (e.g. operators, slashers, pausers, etc.), the privileges they hold, and any conditions under which privilege escalation is expected/allowable
+
+- `USDe` minter - can mint any amount of `USDe` tokens to any address. Expected to be the `EthenaMinting` contract
+- `USDe` owner - can set token `minter` and transfer ownership to another address
+- `USDe` token holder - can not just transfer tokens but burn them and sign permits for others to spend their balance
+- `StakedUSDe` admin - can rescue tokens from the contract and also to redistribute a fully restricted staker's `stUSDe` balance, as well as give roles to other addresses (for example the `FULL_RESTRICTED_STAKER_ROLE` role)
+- `StakedUSDeV2` admin - has all power of "`StakedUSDe` admin" and can also call the `setCooldownDuration` method
+- `REWARDER_ROLE` - can transfer rewards into the `StakedUSDe` contract that will be vested over the next 8 hours
+- `BLACKLIST_MANAGER_ROLE` - can do/undo full or soft restriction on a holder of `stUSDe`
+- `SOFT_RESTRICTED_STAKER_ROLE` - address with this role can't stake his `USDe` tokens or get `stUSDe` tokens minted to him
+- `FULL_RESTRICTED_STAKER_ROLE` - address with this role can't burn his `stUSDe` tokens to unstake his `USDe` tokens, neither to transfer `stUSDe` tokens. His balance can be manipulated by the admin of `StakedUSDe`
+- `MINTER_ROLE` - can actually mint `USDe` tokens and also transfer `EthenaMinting`'s token or ETH balance to a custodian address
+- `REDEEMER_ROLE` - can redeem collateral assets for burning `USDe`
+- `EthenaMinting` admin - can set the maxMint/maxRedeem amounts per block and add or remove supported collateral assets and custodian addresses, grant/revoke roles
+- `GATEKEEPER_ROLE` - can disable minting/redeeming of `USDe` and remove `MINTER_ROLE` and `REDEEMER_ROLE` roles from authorized accounts
+
 - [ ] In the event of a DOS, could you outline a minimum duration after which you would consider a finding to be valid? This question is asked in the context of most systems' capacity to handle DoS attacks gracefully for a certain period.
 - [ ] Is any part of your implementation intended to conform to any EIP's? If yes, please list the contracts in this format: 
-  - `Contract1`: Should comply with `ERC/EIPX`
-  - `Contract2`: Should comply with `ERC/EIPY`
+
 
 ## Attack ideas (Where to look for bugs)
 *List specific areas to address - see [this blog post](https://medium.com/code4rena/the-security-council-elections-within-the-arbitrum-dao-a-comprehensive-guide-aa6d001aae60#9adb) for an example*
@@ -185,15 +212,15 @@ _Note for C4 wardens: Anything included in the 4naly3er **or** the automated fin
 
 ```
 - If you have a public code repo, please share it here: ethena.fi  
-- How many contracts are in scope?: 3   
-- Total SLoC for these contracts?: 900  
-- How many external imports are there?: 15  
-- How many separate interfaces and struct definitions are there for the contracts within scope?: 5  
+- How many contracts are in scope?: 6   
+- Total SLoC for these contracts?: 588  
+- How many external imports are there?: 4
+- How many separate interfaces and struct definitions are there for the contracts within scope?: 6
 - Does most of your code generally use composition or inheritance?: Inheritance   
-- How many external calls?: 1   
+- How many external calls?:    
 - What is the overall line coverage percentage provided by your tests?: 70%
 - Is this an upgrade of an existing system?: False
-- Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): ERC-20 Token, Non ERC-20 Token
+- Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): ERC-20 Token
 - Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?: False  
 - Please describe required context: N/A
 - Does it use an oracle?: No  
@@ -205,6 +232,4 @@ _Note for C4 wardens: Anything included in the 4naly3er **or** the automated fin
 
 # Tests
 
-*Provide every step required to build the project from a fresh git clone, as well as steps to run the tests with a gas report.* 
-
-*Note: Many wardens run Slither as a first pass for testing.  Please document any known errors with no workaround.* 
+This readme has the steps to run the tests: https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/README.md
