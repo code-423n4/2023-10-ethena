@@ -1,3 +1,27 @@
+# Ethena Labs audit details
+- Total Prize Pool: $36,500 USDC
+  - HM awards: $24,750 USDC
+  - Analysis awards: $1,500 USDC
+  - QA awards: $750 USDC
+  - Bot Race awards: $2,250 USDC
+  - Gas awards: $750 USDC
+  - Judge awards: $3,600 USDC
+  - Lookout awards: $2,400 USDC
+  - Scout awards: $500 USDC
+- Join [C4 Discord](https://discord.gg/code4rena) to register
+- Submit findings [using the C4 form](https://code4rena.com/2023-10-ethena/submit)
+- [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
+- Starts October 24, 2023 20:00 UTC
+- Ends October 30, 2023 20:00 UTC
+
+## Automated Findings / Publicly Known Issues
+
+The 4naly3er report can be found [here](https://github.com/code-423n4/2023-10-ethena/blob/main/4naly3er-report.md).
+
+Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-10-ethena/blob/main/bot-report.md) within 24 hours of audit opening.
+
+_Note for C4 wardens: Anything included in the 4naly3er **or** the automated findings output is considered a publicly known issue and is ineligible for awards._
+
 # Table of contents
 
 - Files within scope of audit
@@ -15,8 +39,17 @@ Smart contract files are located in /protocols/USDe/contracts
 `EthenaMinting.sol` and the contract it extends, `SingleAdminAccessControl.sol`
 `StakedUSDeV2.sol`, the contract it extends, `StakedUSDe.sol` and the additional contract it creates `USDeSilo.sol`
 
+| Contract | SLOC | Purpose | Libraries used |  
+| ----------- | ----------- | ----------- | ----------- |
+| [USDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDe.sol) | 24 | USDe token stablecoin contract that grants another address the ability to mint USDe | [`@openzeppelin/ERC20Burnable.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Burnable.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/Ownable2Step.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable2Step.sol)|
+| [EthenaMinting.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/EthenaMinting.sol) | 295 | The contract where minting and redemption occurs. USDe.sol grants this contract the ability to mint USDe | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) |
+| [StakedUSDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDe.sol) | 130 | Extension of ERC4626. Users stake USDe to receive stUSDe which increases in value as Ethena deposits protocol yield here | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/ERC4626.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC4626.sol) |
+| [StakedUSDeV2.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDeV2.sol) | 76 | Extends StakedUSDe, adds a redemption cooldown.  | |
+| [USDeSilo.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDeSilo.sol) | 20 | Contract to temporarily hold USDe during redemption cooldown  | |
+| [SingleAdminAccessControl.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/SingleAdminAccessControl.sol) | 43 | EthenaMinting uses SingleAdminAccessControl rather than the standard AccessControl  | |
+
 ## Gitbook
-To get an overview of Ethena, please visit our gitbook: https://ethena-labs.gitbook.io/ethena-labs/10CaMBZwnrLWSUWzLS2a/
+To get an overview of Ethena, please visit our [Gitbook](https://ethena-labs.gitbook.io/ethena-labs/10CaMBZwnrLWSUWzLS2a/).
 
 ## Goals
 
@@ -96,91 +129,28 @@ Note this restriction only applied to staking contract, there are no restriction
 
 Ethena utilises a gnosis safe multisig to hold ownership of its smart contracts. All multisig keys are cold wallets. We will require 7/10 or more confirmations before transactions are approved. This multisig is purely for the purpose of owning the smart contracts, and will not hold funds or do other on chain actions.
 
----
-
-# Ethena Labs audit details
-- Total Prize Pool: $36,500 USDC
-  - HM awards: $24,750 USDC
-  - Analysis awards: $1,500 USDC
-  - QA awards: $750 USDC
-  - Bot Race awards: $2,250 USDC
-  - Gas awards: $750 USDC
-  - Judge awards: $3,600 USDC
-  - Lookout awards: $2,400 USDC
-  - Scout awards: $500 USDC
-- Join [C4 Discord](https://discord.gg/code4rena) to register
-- Submit findings [using the C4 form](https://code4rena.com/2023-10-ethena/submit)
-- [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
-- Starts October 24, 2023 20:00 UTC
-- Ends October 30, 2023 20:00 UTC
-
-## Automated Findings / Publicly Known Issues
-
-The 4naly3er report can be found [here](https://github.com/code-423n4/2023-10-ethena/blob/main/4naly3er-report.md).
-
-Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-10-ethena/blob/main/bot-report.md) within 24 hours of audit opening.
-
-_Note for C4 wardens: Anything included in the 4naly3er **or** the automated findings output is considered a publicly known issue and is ineligible for awards._
-
-[ ⭐️ SPONSORS: Are there any known issues or risks deemed acceptable that shouldn't lead to a valid finding? If so, list them here. ]
-
-
-# Overview
-
-[ ⭐️ SPONSORS: add info here ]
-
 ## Links
 
-- **Previous audits:** 
 - **Documentation:** https://ethena-labs.gitbook.io/ethena-labs/10CaMBZwnrLWSUWzLS2a/
 - **Website:** https://www.ethena.fi/
 - **Twitter:** https://twitter.com/ethena_labs
 - **Discord:** https://discord.com/invite/ethena
 
-
-# Scope
-
-[ ⭐️ SPONSORS: add scoping and technical details here ]
-
-- [ ] In the table format shown below, provide the name of each contract and:
-  - [ ] source lines of code (excluding blank lines and comments) in each *For line of code counts, we recommend running prettier with a 100-character line length, and using [cloc](https://github.com/AlDanial/cloc).* 
-  - [ ] external contracts called in each
-  - [ ] libraries used in each
-
-*List all files in scope in the table below (along with hyperlinks) -- and feel free to add notes here to emphasize areas of focus.*
-
-| Contract | SLOC | Purpose | Libraries used |  
-| ----------- | ----------- | ----------- | ----------- |
-| [USDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDe.sol) | 24 | USDe token stablecoin contract that grants another address the ability to mint USDe | [`@openzeppelin/ERC20Burnable.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Burnable.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/Ownable2Step.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable2Step.sol)|
-| [EthenaMinting.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/EthenaMinting.sol) | 295 | The contract where minting and redemption occurs. USDe.sol grants this contract the ability to mint USDe | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) |
-| [StakedUSDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDe.sol) | 130 | Extension of ERC4626. Users stake USDe to receive stUSDe which increases in value as Ethena deposits protocol yield here | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/ERC4626.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC4626.sol) |
-| [StakedUSDeV2.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDeV2.sol) | 76 | Extends StakedUSDe, adds a redemption cooldown.  | |
-| [USDeSilo.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDeSilo.sol) | 20 | Contract to temporarily hold USDe during redemption cooldown  | |
-| [SingleAdminAccessControl.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/SingleAdminAccessControl.sol) | 43 | EthenaMinting uses SingleAdminAccessControl rather than the standard AccessControl  | |
-
-## Out of scope
-
-*List any files/contracts that are out of scope for this audit.*
-
 # Additional Context
 
-- [ ] Describe any novel or unique curve logic or mathematical models implemented in the contracts
-- [ ] 
-None
-
-- [ ] Please list specific ERC20 that your protocol is anticipated to interact with. Could be "any" (literally anything, fee on transfer tokens, ERC777 tokens and so forth) or a list of tokens you envision using on launch.
+### ERC20 Interactions
 
 stETH and our own USDe stablecoin.
 
-- [ ] Please list specific ERC721 that your protocol is anticipated to interact with.
+### ERC721 Interactions
 
-Only our own ERC712 signed order in EthenaMinting.sol
+Only our own ERC712 signed order in EthenaMinting.sol.
 
-- [ ] Which blockchains will this code be deployed to, and are considered in scope for this audit?
+### Blockchains
 
 Ethereum mainnet
   
-- [ ] Please list all trusted roles (e.g. operators, slashers, pausers, etc.), the privileges they hold, and any conditions under which privilege escalation is expected/allowable
+### Trusted Roles
 
 - `USDe` minter - can mint any amount of `USDe` tokens to any address. Expected to be the `EthenaMinting` contract
 - `USDe` owner - can set token `minter` and transfer ownership to another address
@@ -196,19 +166,7 @@ Ethereum mainnet
 - `EthenaMinting` admin - can set the maxMint/maxRedeem amounts per block and add or remove supported collateral assets and custodian addresses, grant/revoke roles
 - `GATEKEEPER_ROLE` - can disable minting/redeeming of `USDe` and remove `MINTER_ROLE` and `REDEEMER_ROLE` roles from authorized accounts
 
-- [ ] In the event of a DOS, could you outline a minimum duration after which you would consider a finding to be valid? This question is asked in the context of most systems' capacity to handle DoS attacks gracefully for a certain period.
-- [ ] Is any part of your implementation intended to conform to any EIP's? If yes, please list the contracts in this format: 
-
-
-## Attack ideas (Where to look for bugs)
-*List specific areas to address - see [this blog post](https://medium.com/code4rena/the-security-council-elections-within-the-arbitrum-dao-a-comprehensive-guide-aa6d001aae60#9adb) for an example*
-
-## Main invariants
-*Describe the project's main invariants (properties that should NEVER EVER be broken).*
-
-
 ## Scoping Details 
-[ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
 ```
 - If you have a public code repo, please share it here: ethena.fi  
