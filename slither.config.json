@@ -7,5 +7,6 @@
     "@aave/core-v3=lib/aave-v3-core/",
     "@bgd-helpers=lib/aave-helpers/src/",
     "solidity-utils/=lib/aave-helpers/lib/solidity-utils/src/"
-  ]
+  ],
+  "filter_paths": "(/test/|/script/|/forge/|/audit/|/lib/|)"
 }
