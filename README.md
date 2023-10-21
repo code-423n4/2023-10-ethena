@@ -185,4 +185,29 @@ Ethereum mainnet
 
 # Tests
 
-This readme has the steps to run the tests: https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/README.md
+## Install
+
+```bash
+pnpm install
+```
+
+### Foundry unit tests
+
+```bash
+forge build
+forge test
+```
+
+Enable tracing and logging to console via
+
+```
+forge test -vvvv
+```
+
+## Coverage
+
+- To run the coverage you need to provide the `TEST_FORK_URL=YOUR_RPC_URL` variable in the `.env` file located in the main folder.
+- In order to execute the lending market coverage using only one command run `pnpm run -w test:coverage:lending` from the `protocols/USDe` folder. This command will run forge coverage with a custom configuration, creating the report in the `coverage-lending` folder.
+- To see the full coverage report go to `lending-coverage-full` and open the `index.html`
+- Keep in mind that right now the `forge coverage` tool has many bugs, causing incomplete coverage reports, even when the tests are present. For example if a various contracts inherit from the same contract, only the first one will be reflected in the coverage, for this reason the script only checks for the USDe token contracts, the other contracts are tested to the 100% only that the won't be present in the coverage. [Error ref](https://github.com/foundry-rs/foundry/issues/4316)
+- There is a full coverage in the `lending-coverage-full` folder.
