@@ -120,12 +120,12 @@ Smart contract files are located in /protocols/USDe/contracts
 
 | Contract | SLOC | Purpose | Libraries used |  
 | ----------- | ----------- | ----------- | ----------- |
-| [USDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDe.sol) | 24 | USDe token stablecoin contract that grants another address the ability to mint USDe | [`@openzeppelin/ERC20Burnable.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Burnable.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/Ownable2Step.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable2Step.sol)|
-| [EthenaMinting.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/EthenaMinting.sol) | 295 | The contract where minting and redemption occurs. USDe.sol grants this contract the ability to mint USDe | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) |
-| [StakedUSDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDe.sol) | 130 | Extension of ERC4626. Users stake USDe to receive stUSDe which increases in value as Ethena deposits protocol yield here | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/ERC4626.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC4626.sol) |
-| [StakedUSDeV2.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDeV2.sol) | 76 | Extends StakedUSDe, adds a redemption cooldown.  | |
-| [USDeSilo.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDeSilo.sol) | 20 | Contract to temporarily hold USDe during redemption cooldown  | |
-| [SingleAdminAccessControl.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/SingleAdminAccessControl.sol) | 43 | EthenaMinting uses SingleAdminAccessControl rather than the standard AccessControl  | |
+| [USDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/USDe.sol) | 24 | USDe token stablecoin contract that grants another address the ability to mint USDe | [`@openzeppelin/ERC20Burnable.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Burnable.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/Ownable2Step.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable2Step.sol)|
+| [EthenaMinting.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/EthenaMinting.sol) | 295 | The contract where minting and redemption occurs. USDe.sol grants this contract the ability to mint USDe | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) |
+| [StakedUSDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/StakedUSDe.sol) | 130 | Extension of ERC4626. Users stake USDe to receive stUSDe which increases in value as Ethena deposits protocol yield here | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/ERC4626.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC4626.sol) |
+| [StakedUSDeV2.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/StakedUSDeV2.sol) | 76 | Extends StakedUSDe, adds a redemption cooldown.  | |
+| [USDeSilo.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/USDeSilo.sol) | 20 | Contract to temporarily hold USDe during redemption cooldown  | |
+| [SingleAdminAccessControl.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/SingleAdminAccessControl.sol) | 43 | EthenaMinting uses SingleAdminAccessControl rather than the standard AccessControl  | |
 
 ## Out of Scope
 
@@ -160,6 +160,19 @@ Ethereum mainnet
 - `REDEEMER_ROLE` - can redeem collateral assets for burning `USDe`
 - `EthenaMinting` admin - can set the maxMint/maxRedeem amounts per block and add or remove supported collateral assets and custodian addresses, grant/revoke roles
 - `GATEKEEPER_ROLE` - can disable minting/redeeming of `USDe` and remove `MINTER_ROLE` and `REDEEMER_ROLE` roles from authorized accounts
+
+
+# Attack Ideas (Where to look for bugs)
+
+
+# Main Invariants
+
+
+Properties that should NEVER be broken under any circumstance:
+
+# Known Issues
+
+
 
 ## Scoping Details 
 

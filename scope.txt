@@ -1,0 +1,6 @@
+contracts/USDe.sol
+contracts/EthenaMinting.sol
+contracts/StakedUSDe.sol
+contracts/StakedUSDeV2.sol
+contracts/USDeSilo.sol
+contracts/SingleAdminAccessControl.sol
