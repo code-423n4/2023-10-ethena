@@ -167,11 +167,21 @@ Ethereum mainnet
 
 # Main Invariants
 
-
 Properties that should NEVER be broken under any circumstance:
+
+EthenaMinting.sol - User's signed EIP712 order, if executed, must always execute as signed. ie for mint orders, USDe is minted to user and collateral asset is removed from user based on the signed values.
+
+Max mint per block should never be exceeded.
+
+USDe.sol - Only the defined minter address can have the ability to mint USDe.
+
+
 
 # Known Issues
 
+- `SOFT_RESTRICTED_STAKER_ROLE` can be bypassed by user buying/selling stUSDe on the open market
+- Line 343 in `EthenaMinting.sol` should be `InvalidAddress()` instead of `InvalidAmount()`
+- `maxRedeemPerBlock` does not limit redemption in case of `REDEEMER_ROLE` key compromise unlike `maxMintPerBlock`, as the attacker can redeem all collateral held in the contract for 0 USDe, which does not increment `maxRedeemPerBlock`. This is by design, as limiting unlimited mints was the primary attack vector we wish to eliminate on key compromise and losing all funds currently in minting contract (which will be a <$200k amount) is an acceptable outcome. 
 
 
 ## Scoping Details 
