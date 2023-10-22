@@ -22,31 +22,7 @@ Automated findings output for the audit can be found [here](https://github.com/c
 
 _Note for C4 wardens: Anything included in the 4naly3er **or** the automated findings output is considered a publicly known issue and is ineligible for awards._
 
-# Table of contents
-
-- Files within scope of audit
-- Goals of Ethena Protocol
-- Gitbook
-- How we generate yield
-- Maintain delta neutrality
-- 3 Contract architecture
-- Owner of contracts
-
-## Audit scope
-Smart contract files are located in /protocols/USDe/contracts
-
-`USDe.sol`
-`EthenaMinting.sol` and the contract it extends, `SingleAdminAccessControl.sol`
-`StakedUSDeV2.sol`, the contract it extends, `StakedUSDe.sol` and the additional contract it creates `USDeSilo.sol`
-
-| Contract | SLOC | Purpose | Libraries used |  
-| ----------- | ----------- | ----------- | ----------- |
-| [USDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDe.sol) | 24 | USDe token stablecoin contract that grants another address the ability to mint USDe | [`@openzeppelin/ERC20Burnable.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Burnable.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/Ownable2Step.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable2Step.sol)|
-| [EthenaMinting.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/EthenaMinting.sol) | 295 | The contract where minting and redemption occurs. USDe.sol grants this contract the ability to mint USDe | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) |
-| [StakedUSDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDe.sol) | 130 | Extension of ERC4626. Users stake USDe to receive stUSDe which increases in value as Ethena deposits protocol yield here | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/ERC4626.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC4626.sol) |
-| [StakedUSDeV2.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/StakedUSDeV2.sol) | 76 | Extends StakedUSDe, adds a redemption cooldown.  | |
-| [USDeSilo.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/USDeSilo.sol) | 20 | Contract to temporarily hold USDe during redemption cooldown  | |
-| [SingleAdminAccessControl.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/contracts/SingleAdminAccessControl.sol) | 43 | EthenaMinting uses SingleAdminAccessControl rather than the standard AccessControl  | |
+# Overview
 
 ## Gitbook
 To get an overview of Ethena, please visit our [Gitbook](https://ethena-labs.gitbook.io/ethena-labs/10CaMBZwnrLWSUWzLS2a/).
@@ -126,7 +102,6 @@ Due to legal requirements, there's a `SOFT_RESTRICTED_STAKER_ROLE` and `FULL_RES
 Note this restriction only applied to staking contract, there are no restrictions or ability to freeze funds of the USDe stablecoin, unlike USDC.
 
 ## Owner of Ethena's smart contracts
-
 Ethena utilises a gnosis safe multisig to hold ownership of its smart contracts. All multisig keys are cold wallets. We will require 7/10 or more confirmations before transactions are approved. This multisig is purely for the purpose of owning the smart contracts, and will not hold funds or do other on chain actions.
 
 ## Links
@@ -135,6 +110,26 @@ Ethena utilises a gnosis safe multisig to hold ownership of its smart contracts.
 - **Website:** https://www.ethena.fi/
 - **Twitter:** https://twitter.com/ethena_labs
 - **Discord:** https://discord.com/invite/ethena
+
+# Scope
+Smart contract files are located in /protocols/USDe/contracts
+
+`USDe.sol`
+`EthenaMinting.sol` and the contract it extends, `SingleAdminAccessControl.sol`
+`StakedUSDeV2.sol`, the contract it extends, `StakedUSDe.sol` and the additional contract it creates `USDeSilo.sol`
+
+| Contract | SLOC | Purpose | Libraries used |  
+| ----------- | ----------- | ----------- | ----------- |
+| [USDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/USDe.sol) | 24 | USDe token stablecoin contract that grants another address the ability to mint USDe | [`@openzeppelin/ERC20Burnable.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Burnable.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/Ownable2Step.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable2Step.sol)|
+| [EthenaMinting.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/EthenaMinting.sol) | 295 | The contract where minting and redemption occurs. USDe.sol grants this contract the ability to mint USDe | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) |
+| [StakedUSDe.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/StakedUSDe.sol) | 130 | Extension of ERC4626. Users stake USDe to receive stUSDe which increases in value as Ethena deposits protocol yield here | [`@openzeppelin/ReentrancyGuard.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol) [`@openzeppelin/ERC20Permit.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol) [`@openzeppelin/ERC4626.sol`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC4626.sol) |
+| [StakedUSDeV2.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/StakedUSDeV2.sol) | 76 | Extends StakedUSDe, adds a redemption cooldown.  | |
+| [USDeSilo.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/USDeSilo.sol) | 20 | Contract to temporarily hold USDe during redemption cooldown  | |
+| [SingleAdminAccessControl.sol](https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/SingleAdminAccessControl.sol) | 43 | EthenaMinting uses SingleAdminAccessControl rather than the standard AccessControl  | |
+
+## Out of Scope
+
+Any file not listed above
 
 # Additional Context
 
@@ -166,6 +161,29 @@ Ethereum mainnet
 - `EthenaMinting` admin - can set the maxMint/maxRedeem amounts per block and add or remove supported collateral assets and custodian addresses, grant/revoke roles
 - `GATEKEEPER_ROLE` - can disable minting/redeeming of `USDe` and remove `MINTER_ROLE` and `REDEEMER_ROLE` roles from authorized accounts
 
+
+# Attack Ideas (Where to look for bugs)
+
+
+# Main Invariants
+
+Properties that should NEVER be broken under any circumstance:
+
+EthenaMinting.sol - User's signed EIP712 order, if executed, must always execute as signed. ie for mint orders, USDe is minted to user and collateral asset is removed from user based on the signed values.
+
+Max mint per block should never be exceeded.
+
+USDe.sol - Only the defined minter address can have the ability to mint USDe.
+
+
+
+# Known Issues
+
+- `SOFT_RESTRICTED_STAKER_ROLE` can be bypassed by user buying/selling stUSDe on the open market
+- Line 343 in `EthenaMinting.sol` should be `InvalidAddress()` instead of `InvalidAmount()`
+- `maxRedeemPerBlock` does not limit redemption in case of `REDEEMER_ROLE` key compromise unlike `maxMintPerBlock`, as the attacker can redeem all collateral held in the contract for 0 USDe, which does not increment `maxRedeemPerBlock`. This is by design, as limiting unlimited mints was the primary attack vector we wish to eliminate on key compromise and losing all funds currently in minting contract (which will be a <$200k amount) is an acceptable outcome. 
+
+
 ## Scoping Details 
 
 ```
@@ -190,4 +208,29 @@ Ethereum mainnet
 
 # Tests
 
-This readme has the steps to run the tests: https://github.com/code-423n4/2023-10-ethena/blob/main/protocols/USDe/README.md
+<!-- ## Install
+
+```bash
+pnpm install
+```
+
+### Foundry unit tests
+
+```bash
+forge build
+forge test
+```
+
+Enable tracing and logging to console via
+
+```
+forge test -vvvv
+```
+
+## Coverage
+
+- To run the coverage you need to provide the `TEST_FORK_URL=YOUR_RPC_URL` variable in the `.env` file located in the main folder.
+- In order to execute the lending market coverage using only one command run `pnpm run -w test:coverage:lending` from the `protocols/USDe` folder. This command will run forge coverage with a custom configuration, creating the report in the `coverage-lending` folder.
+- To see the full coverage report go to `lending-coverage-full` and open the `index.html`
+- Keep in mind that right now the `forge coverage` tool has many bugs, causing incomplete coverage reports, even when the tests are present. For example if a various contracts inherit from the same contract, only the first one will be reflected in the coverage, for this reason the script only checks for the USDe token contracts, the other contracts are tested to the 100% only that the won't be present in the coverage. [Error ref](https://github.com/foundry-rs/foundry/issues/4316)
+- There is a full coverage in the `lending-coverage-full` folder. -->
