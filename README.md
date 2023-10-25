@@ -41,9 +41,9 @@ Users mint USDe with stETH, and Ethena opens an equvilant short ETH perps positi
 
 ## How we maintain delta neutrality
 
-The long stETH and short ETH perps creates a position with value that's fixed to the time of it's creation. Imagine ETH = $2000, user sends in 10 stETH to mint 20000 USDe, and Ethena shorts 10 ETH worth of perps.
+The long stETH and short ETH perps creates a position with value that's fixed to the time of it's creation. Imagine ETH = &#36;2000, user sends in 10 stETH to mint 20000 USDe, and Ethena shorts 10 ETH worth of perps.
 
-If the market goes down 90%, the long 10 stETH position is now worth $2000, down from $20000. While the short 10 ETH perps position has an unrealized P&L of $18000. If the user wishes to redeem his USDe, the short perps position can be closed to realize $18000 of profits, and buy 90 stETH. Along with the original 10 stETH, the user is returned 100 stETH, also worth $20000.
+If the market goes down 90%, the long 10 stETH position is now worth &#36;2000, down from &#36;20000. While the short 10 ETH perps position has an unrealized P&L of $18000. If the user wishes to redeem his USDe, the short perps position can be closed to realize &#36;18000 of profits, and buy 90 stETH. Along with the original 10 stETH, the user is returned 100 stETH, also worth &#36;20000.
 
 ## Our 3 Smart contracts
 
@@ -67,7 +67,7 @@ In the `mint()` function, `order` and `signature` parameters comes from users wh
 
 ### Redeeming
 
-Similar to minting, user performs an EIP712 signature with prices Ethena defined. We then submit their signature and order into `redeem()` function. The funds from redemption comes from the Ethena minting contract directly. Ethena aims to hold between $100k-$200k worth of collateral at all times for hot redemptions. This mean for users intending to redeem a large amount, they will need to redeem over several blocks. Alternatively they can sell USDe on the open market.
+Similar to minting, user performs an EIP712 signature with prices Ethena defined. We then submit their signature and order into `redeem()` function. The funds from redemption comes from the Ethena minting contract directly. Ethena aims to hold between &#36;100k-&#36;200k worth of collateral at all times for hot redemptions. This mean for users intending to redeem a large amount, they will need to redeem over several blocks. Alternatively they can sell USDe on the open market.
 
 ### Setting delegated signer
 
