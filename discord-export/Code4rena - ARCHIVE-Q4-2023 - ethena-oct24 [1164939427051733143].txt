@@ -1,0 +1,2289 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-Q4-2023 / ethena-oct24
+==============================================================
+
+[10/24/2023 19:00] knownfactc4_29311 (pinned)
+👋 Hello and welcome to the audit channel for the $36,500 USDC **Ethena Labs** audit!
+
+📆 Audit opens 10/24/2023 20:00 (20:00 UTC) and runs through 10/30/2023 20:00 (20:00 UTC) ([#-of-days] days).
+
+Please give a warm welcome to the Ethena Labs team, particularly @kayin and @deHB6 will be available for questions either here in the channel or via DM in the UK timezone.
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this audit, consider enabling notifications for this channel. 🐺 ⏰
+
+Audit Page: [https://code4rena.com/contests/2023-10-ethena-labs]
+
+{Reactions}
+🔥 (7) 👍 
+
+[10/24/2023 19:55] kartoonjoy
+Pinned a message.
+
+
+[10/24/2023 20:07] thebrittfactor (pinned)
+**4naly3er Report**
+
+The 4naly3er report can be found [here](https://github.com/code-423n4/2023-10-ethena/blob/main/4naly3er-report.md).
+
+*Note for C4 wardens: The 4naly3er report is ran by our pre-audit Scouts and will be posted at audit launch. This will be in addition to the automated findings (bot report), so anything included in the 4naly3er or the automated findings output (once shared) is considered a publicly known issue and is ineligible for awards.*
+
+{Reactions}
+❤️ (4) 💈 
+
+[10/24/2023 20:07] thebrittfactor
+Pinned a message.
+
+
+[10/24/2023 22:03] niser93
+@kayin i dmed y
+
+{Reactions}
+👍 
+
+[10/24/2023 22:22] shealtielanz
+Can this issue be fixed —> concerning readability
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/IMG_4465-C8F12.png
+
+{Reactions}
+👆 
+
+[10/24/2023 23:29] pacelliv
+Hello, RFQ stands for Request for Quote?
+
+
+[10/24/2023 23:31] kayin222_67827
+Yup that's correct. The process is, users (or market makers) will do an RFQ by sending us the quantity of stETH for mints, and USDe for redeems. And we will respond with USDe quantity for mints, stETH for redeems. This is done off chain.
+
+If they wish to proceed with the order, they will then sign the eip712 order based on the RFQ values and send it back to us
+
+{Reactions}
+👍 (3) 
+
+[10/24/2023 23:56] tx.origin
+really appreciate the effort that went into creating the docs and faq
+
+{Reactions}
+👍 (5) 
+
+[10/25/2023 03:05] bowtiedvirus
+Super interesting protocol. High level docs are also **supreme**.
+
+
+[10/25/2023 03:06] bowtiedvirus
+@kayin https://ethena-labs.gitbook.io/ethena-labs/10CaMBZwnrLWSUWzLS2a/resources/audits shows only 1 linked protocol, but suggests that there should be more. Any links for those you can share?
+
+{Reactions}
+➕ (2) 
+
+[10/25/2023 03:28] oceansky
+@kayin  dmed u thx
+
+
+[10/25/2023 04:21] 0x11singh99
+docs with night mode   Thanks @kayin
+
+
+[10/25/2023 06:13] Message Wolf#0225 (pinned)
+**Automated Findings / Publicly Known Issues**
+
+Automated findings output for the audit can be found [here](https://gist.github.com/code423n4/58a34c8d4c41d8d15f18cb43a2c71e3e).
+
+*Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards.*
+
+{Reactions}
+🤖 (2) 
+
+[10/25/2023 09:22] rickardlarsson6
+What @openzeppelin contract version is used throughout the codebase?
+
+
+[10/25/2023 09:25] drynooo
+I think it's v4.9.0.
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/image-B30BE.png
+
+
+[10/25/2023 09:25] rickardlarsson6
+Thanks man!
+
+{Reactions}
+🫡 
+
+[10/25/2023 11:21] coffiasd
+I think foundry will choose the latest version IMO
+
+{Reactions}
+🫡 
+
+[10/25/2023 11:25] kimchi_the_dog
+@kayin dm'ed you, thanks
+
+
+[10/25/2023 11:56] kayin222_67827
+will revert on this
+
+
+[10/25/2023 12:28] pinalikefruit
+@kayin How many audits has the code passed?
+
+
+[10/25/2023 12:38] thebrittfactor
+Pinned a message.
+
+
+[10/25/2023 12:43] kayin222_67827
+@Piña @bowtiedvirus Quantstamp and Pashov's audits are updated in the same link: https://ethena-labs.gitbook.io/ethena-labs/10CaMBZwnrLWSUWzLS2a/resources/audits
+
+Audit by spearbit was also recently completed but we're in the fix review process. will be added in the same link when done.
+
+{Reactions}
+👍 (4) 
+
+[10/25/2023 12:52] proxy1967
+Interfaces are not in scope ?
+
+
+[10/25/2023 13:17] al_qa_qa
+Are these 3 audits for the same codebase, or the audits was for the code outside the scope?
+
+
+[10/25/2023 15:20] 0x11singh99
+@kayin  please tell    if yes thyen all findings have been fixed in this codebase or not ?
+
+
+[10/25/2023 15:34] kayin222_67827
+@Al-Qa-qa @0x11singh99  This codebase is after Quantstamp audit and fixes for them. but before pashov and spearbit audit were started. Can ignore zellic audit as it's a super old version.
+
+
+[10/25/2023 15:35] kayin222_67827
+Yes it was not included in the scope of this contest. when we did other audits, the auditors mainly wanted the solidity file scope only hence we provided the same.
+
+{Reactions}
+✅ 
+
+[10/25/2023 15:36] aslanbekaibimov
+@kayin sent you a message in a private thread about 7 hours ago, please check it when you have time
+
+{Reactions}
+👍 
+
+[10/25/2023 15:43] kartoonjoy
+Started a thread.
+
+
+[10/25/2023 16:14] 0x11singh99
+ie.  pashov and spearbit audited this same code base and thier findngs yet not fixed but can be cosiderd as known issues. Am I right ? @kayin
+
+
+[10/25/2023 17:07] cryptor9119
+Will spearbit's findings be made public before the contest ends? @kayin
+
+
+[10/25/2023 17:13] proxy1967
+@kayin What assets are going to be in `_supportedAssets` and can you explain a bit more what are `_custodianAddresses` / who will they be ? from the `EthenaMinting` contract
+
+
+[10/25/2023 18:13] al_qa_qa
+Pashov audit is public in his github profile, he found 4 low.
+
+And the bots found 3 medium and +10 low 😂
+
+{Reactions}
+🤨 (6) 🤫 (3) 
+
+[10/25/2023 20:35] thetechnofeak
+i am unable to understand the docs properly in this protocol , how did you guys got that ?
+
+
+[10/25/2023 21:57] niser93
+@kayin i Dmed you
+
+
+[10/25/2023 22:16] kayin222_67827
+undecided atm, however it didn't find any important issues
+
+
+[10/25/2023 22:20] cryptor9119
+I think it should remain private as wardens may have already found similar stuff
+
+{Reactions}
+🆗 (2) 
+
+[10/26/2023 02:04] coffiasd
+Is there a list of assets that can be used as the underlying token to mint USDe tokens, or can only stEth be used as the underlying token? @kayin
+
+
+[10/26/2023 02:26] almurhasan
+@kayin What assets are going to be in `_supportedAssets` and can you explain a bit mor what are `_custodianAddresses` / who will they be ? from the `EthenaMinting` contract
+
+
+[10/26/2023 05:34] taner2344
+Who is given minter_role?
+
+
+[10/26/2023 05:59] 0x11singh99
+anyone the admin want
+
+
+[10/26/2023 06:00] 0xkral
+From the docs, 
+
+> Approved parties from permitted jurisdictions who pass KYC/KYB screening are able to mint & redeem USDe on-demand with Ethena Labs contracts directly which will include only market making entities.
+
+
+[10/26/2023 06:09] squeaky_cactus
+Started a thread.
+
+
+[10/26/2023 07:39] stryder1496
+Can someone tell me what is the role of belowMaxMintPerBlock and belowMaxRedeemPerBlock. I mean why are they needed , where would it help to limit the max mints and redeems per block ?
+
+
+[10/26/2023 07:47] proxy1967
+In case of a hack I believe, to limit the amount lost. I've read it somewhere in the docs and that's what I concluded at least.
+
+{Reactions}
+👍 
+
+[10/26/2023 07:54] qwertypark
+@kayin dm
+
+
+[10/26/2023 08:04] 0xstalin
+soo, If I understood it correctly, only the holders of stUSDe will earn the generated yield, whilst, holders of USDe won't get any yield, unless they stake their tokens?
+
+{Reactions}
+✅ (6) 
+
+[10/26/2023 08:14] 0xleveler
+I think so yes, USDe is a stablecoin, will generate yield when you stake
+
+
+[10/26/2023 08:15] stryder1496
+sent you a fr , please accept i wanted to ask something
+
+
+[10/26/2023 08:16] 0xleveler
+Who was able to compile these contracts on remix ide and how ?
+
+
+[10/26/2023 09:01] stuart_the_minion
+@kayin , dmed to you
+
+
+[10/26/2023 09:05] Deleted User
+I have a question, why there are functions  like this  one  who doesnt not have a purpose    ```          function renounceRole(bytes32, address) public virtual override {
+
+
+                revert OperationNotAllowed();
+
+        }
+ ```   ??
+
+
+[10/26/2023 09:16] 0xsorrynotsorry
+It overrides the OZ library and doesn't leave any chance for the protocol to be without owner.
+
+{Reactions}
+👆 (5) ❤️ 
+
+[10/26/2023 09:16] 0xkral
+This is to adhere to the eip ig.
+
+{Reactions}
+❤️ 
+
+[10/26/2023 09:17] 0xsorrynotsorry
+DM'ed you ser @kayin
+
+
+[10/26/2023 10:14] stryder1496
+@kayin DM'ed you , kindly check
+
+
+[10/26/2023 10:31] stryder1496
+Can someone tell me what is a donation attack their docs are refferring to ? i am unable to find any articles on this one.
+
+
+[10/26/2023 10:56] pavankv
+Is there another sponsor here? .
+
+
+[10/26/2023 11:07] kartoonjoy
+@kayin is your point of contact for this audit.
+
+
+[10/26/2023 11:09] pavankv
+But he has been offline since yesterday.
+
+
+[10/26/2023 11:33] unusual_byte
+What is the primary goal of the USDe contract?
+
+
+[10/26/2023 11:43] kayin222_67827
+custodianAddresses are our custodians. Copper/Fireblocks, etc. They will hold on to stETH where we delegate them to exchanges (instead of us sending funds to exchange directly)
+
+
+[10/26/2023 11:47] kayin222_67827
+stETH in the beginning, wETH most likely. because not all exchanges support stETH as collateral for ETH perps position and it's a process to get that onboarded. If insufficient exchanges support stETH as a we grow, we will start supporting wETH.
+
+we may consider a very small percentage of centralised LSD (cbETH, etc), but due to added centralisation risk it will be an amount that can be covered under our insurance fund in case cbETH depegs.
+
+
+[10/26/2023 11:48] kayin222_67827
+that's correct. USDe will be equivalent to using DAI, USDC, USDT where it doesn't have any yield. There's legal requirements for us to seperate the stablecoin and the yield generating stUSDe hence holding just USDe does not provide yield.
+
+{Reactions}
+🫡 
+
+[10/26/2023 11:51] kayin222_67827
+In case of compromised minter role, the max loss is limited to 2x maxMintPerBlock. Hacker can mint 100k (if 100k is limit), gatekeeper spots mispriced tx and shuts down mint/redeem, hacker may be able to mint 100k again with high gas cost in the same block gatekeeper shuts down the contract.
+
+Without this implementation, compromised minter key means someone can mint unlimited USDe and dump onto pools. We look to ensure any key compromise in the system can only cause limited damage
+
+{Reactions}
+👍 
+
+[10/26/2023 11:52] zaevlad
+@kayin dm you, thanks
+
+
+[10/26/2023 11:54] kayin222_67827
+The assets we accept as collateral, stETH, possibly wETH in the future (depends on onboarding more exchanges allowing stETH as collateral). possibly very small % in centralised LSD. custodianAddresses is Copper/Fireblocks. They hold the stETH which we delegate to exchanges, instead of us sending collateral direct to exchanges
+
+
+[10/26/2023 12:00] asui0944
+can you please explain what Copper/Fireblocks are?  is it contracts or EOAs or what is it
+
+
+[10/26/2023 12:01] kayin222_67827
+This is not correct. MINTER_ROLE is held by Ethena. And only approved entities can do an RFQ, sign an order and submit it to Ethena. After which we run some checks, ensure the address is whitelisted, then we use our MINTER_ROLE to submit that order on chain.
+
+
+[10/26/2023 12:02] 0xkral
+I just copied it from the docs?🤔
+
+
+[10/26/2023 12:13] proxy1967
+so `custodianAddresses` are related to the `Route` struct ?
+
+
+[10/26/2023 12:15] kayin222_67827
+Started a thread.
+
+
+[10/26/2023 13:16] asui0944
+So in EthenaMinting mint and redeem is not done directly by the user ? Who is going to have the minter and redeemer role
+
+
+[10/26/2023 13:17] asui0944
+And the gas fees is paid by the minter and redeemer right?
+
+
+[10/26/2023 13:53] jvorex
+@kayin hi, could you please explain that part of how you maintain delta neutrality in the readme better? this is what I can think of for the calculation but I’m unsure how you arrived at the calculations in the README
+
+
+[10/26/2023 13:54] jvorex
+@kayin shouldn’t it be that:
+
+ETH is 2k a piece. If a market goes down 90%, the long 10 stETH should be worth 2k (200*10) down from 20k. While the short 10 ETH position opened at a perpetual exchange has an unrealized p&l of 18k (1800 * 10)
+
+
+[10/26/2023 13:54] jvorex
+If I now wish to redeem my USDe, the short perp position will be closed to realize the 18k profit which is 9 stETH (2k * 9) along with my original 10 stETH. So overall I should be getting 38k (18k + 20k)
+
+
+[10/26/2023 14:30] rahiti
+Do we all agree that we can come up with a scenario where a high privileged account (such as admin or owner) is compromised ?
+In this case, we would have to show how this can be more destructive than expect by the protocol, right ?
+
+
+[10/26/2023 14:48] niser93
+I think that it could be a theme inside analysis, but not an high/medium issue
+
+
+[10/26/2023 14:49] niser93
+You should find a way to compromise a privileged account, if you are able to
+
+
+[10/26/2023 14:49] al_qa_qa
+This kind of things is considered as a medium one at least, but the protocol team made it a known issue in the code4rena docs.
+
+
+[10/26/2023 14:51] plamkata
+In the ``_transferCollateral`` function, why is the remaining balance sent to the last address?
+
+
+[10/26/2023 14:52] rahiti
+Thanks for the answers 🫶🏼
+
+{Reactions}
+🔥 
+
+[10/26/2023 15:13] kayin222_67827
+Started a thread.
+
+
+[10/26/2023 15:15] kayin222_67827
+Started a thread.
+
+
+[10/26/2023 15:17] kayin222_67827
+Started a thread.
+
+
+[10/26/2023 15:18] kayin222_67827
+Started a thread.
+
+
+[10/26/2023 15:19] kayin222_67827
+Started a thread.
+
+
+[10/26/2023 15:26] m4k2
+Can you explain to me why the ratio in `EthenaMinting.verifyRoute` method is `10_000` : `if (totalRatio != 10_000){ return false;}` @kayin
+
+
+[10/26/2023 15:32] plamkata
+it is calculated in BPS instead of % because of integer maths
+
+
+[10/26/2023 15:32] plamkata
+10_000 BPS = 100% so if the total ratio is not 10_000, this means not 100% have been convered, or more have been covered
+
+{Reactions}
+👍 (3) 
+
+[10/26/2023 16:07] kartoonjoy
+Welcome sponsor team member @deHB6!
+
+{Reactions}
+🫡 (5) 
+
+[10/26/2023 16:27] 0xbtk
+Typo (It should be None): 
+
+ERC721 Interactions
+Only our own ERC712 signed order in EthenaMinting.sol.
+
+
+[10/26/2023 17:06] taner2344
+Which chains will this protocol deploy?
+
+
+[10/26/2023 17:07] 0xstalin
+Ethereum Mainnet
+
+
+[10/26/2023 17:08] taner2344
+Only ethereum?
+
+
+[10/26/2023 17:08] 0xstalin
+as per readme, yes
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/image-B7E49.png
+
+
+[10/26/2023 17:09] taner2344
+Oh, thank you. Sorry to bother you
+
+
+[10/26/2023 17:35] almurhasan
+kayin dm you
+
+
+[10/26/2023 18:07] 0xstalin
+So, there will be two types of staking? One using the StakedUSDe contract without the cooling period, and another one using the StakedUSDeV2 contract with the cooling period?
+
+Or will only the StakedUSDeV2 contract be deployed as the staking contract?
+
+
+[10/26/2023 18:29] newarkbg
+only StakedUSDeV2, with the ability to turn the cooldown on or off and adjust time
+
+{Reactions}
+thankyou (2) 👍 
+
+[10/26/2023 20:37] 0xstalin
+given the fact that only a valid MINTER can call the mint() in the EthenaMinting contract, it is safe to assume that all the calldatas are correct, right? Same for the redeem()?
+
+
+[10/26/2023 20:41] aslanbekaibimov
+isnt it the definition of a trusted role?
+
+{Reactions}
+4739_Skeletor (4) 
+
+[10/26/2023 22:27] stuart_the_minion
+@kayin , just dmed you.
+
+{Reactions}
+👍 
+
+[10/27/2023 00:29] Amithuddar#9571
+my question may seem silly but answer to it will save me a lot of time as i was far from c4r latest update, i have to look for bugs only at suggested "Where to look for bugs" or anywhere in scope.
+
+
+[10/27/2023 00:59] rokinot
+@kayin should we assume "perps exchange" includes CEXes and/or perps DEXes like GMX?
+
+
+[10/27/2023 03:32] coffiasd
+The participants have signed a transfer transaction and then sent it to a miner. This process feels a bit unusual
+
+
+[10/27/2023 03:34] coffiasd
+But the price is constantly changing, so this operation may not be very real-time ?
+
+
+[10/27/2023 04:05] erictee
+@kayin dmed
+
+
+[10/27/2023 05:37] squeaky_cactus
+Started a thread.
+
+
+[10/27/2023 05:48] coffiasd
+@kayin  send a FR
+
+
+[10/27/2023 07:48] 0xaman.
+@kayin dmed
+
+
+[10/27/2023 08:04] 0xleveler
+Anywhere in scope, those are just suggestions I think
+
+{Reactions}
+👍 
+
+[10/27/2023 08:05] 0xleveler
+The attack surface area of this protocol is greatly reduced by the fact that most actions are handled offchain and by the trusted roles.
+
+
+[10/27/2023 08:06] mylifechangefast.eth
+Anyone please... Is it from the development environment?
+
+
+[10/27/2023 08:07] 0xaman.
+have you installed the packages ?
+
+
+[10/27/2023 08:07] mylifechangefast.eth
+or my node_modules and I dont see any
+
+
+[10/27/2023 08:07] mylifechangefast.eth
+How? I might have done something wrong
+
+
+[10/27/2023 08:07] 0xaman.
+run forge build or follow the instruction on repo
+
+
+[10/27/2023 08:09] mylifechangefast.eth
+I would see to that now and I would ge tback to you boss
+
+
+[10/27/2023 08:11] stryder1496
+@kayin do the roles have any precendence over each other . Like can BLACKLIST_MANAGER_ROLE blacklist everyone ??
+
+
+[10/27/2023 08:11] mylifechangefast.eth
+It compiled successfully though
+
+
+[10/27/2023 11:08] kayin222_67827
+Started a thread.
+
+
+[10/27/2023 13:02] j4x_98
+Quick question regarding the `DEFAULT_ADMIN_ROLE`, is that the multisig on all contracts?
+
+
+[10/27/2023 13:04] coffiasd
+@kayin  ser send a FR
+
+
+[10/27/2023 13:28] wasabi_26768
+@kayin hey, what is `transferToCustody` used for and when?
+
+
+[10/27/2023 13:55] mylifechangefast.eth
+@kayin kayin quick question is the contract Ethena used across multiple chains or just one?
+
+
+[10/27/2023 14:03] oceansky
+only one, eth mainnet
+
+{Reactions}
+thankyou 
+
+[10/27/2023 14:22] kayin222_67827
+Started a thread.
+
+
+[10/27/2023 14:23] kayin222_67827
+Started a thread.
+
+
+[10/27/2023 14:36] noro9954
+Hello, what RFQ stands for ?
+
+
+[10/27/2023 14:36] 0xfiending
+request for quote
+
+
+[10/27/2023 15:01] noro9954
+> *"Delta" refers to the sensitivity of the derivatives contract to a change in the price of the underlying asset.*
+in this protocol case what is the derivatives contract ?
+
+
+[10/27/2023 15:28] coffiasd
+@kayin  I'm a bit confused about this VESTING_PERIOD. Do I have to wait until the end of a cycle to transfer again, or can I transfer before the VESTING_PERIOD is over
+
+
+[10/27/2023 15:28] kayin222_67827
+the rewarder have to wait till vesting is over before transferring rewards again
+
+
+[10/27/2023 15:54] plamkata
+@kayin sent a dm
+
+
+[10/27/2023 16:06] noro9954
+@kayin in this example, if market goes up, how is long stETH able to offset short ETH losses and return stETH to user ?
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/image-ECA0A.png
+
+
+[10/27/2023 16:06] jacobmartin0406
+What is _orderBitmaps in EthenaMinting.sol?
+
+
+[10/27/2023 16:59] viktor_cortess
+There is a comment // cannot mint using unsupported asset or native ETH even if it is supported for redemptions . Isn't it supposed to work only with ETH? Or other ERC20 tokens are in plans too?
+
+
+[10/27/2023 17:08] mylifechangefast.eth
+Request for Quote
+
+something like that
+
+
+[10/27/2023 18:02] j4x_98
+sent you a dm @kayin
+
+
+[10/27/2023 18:23] newarkbg
+CEXes only to start, hoping to integrate DEXes later too though
+
+
+[10/27/2023 18:23] viraz4331
+dm'ed @kayin
+
+
+[10/27/2023 18:26] newarkbg
+prevents duplicate orders from being processed by storing nonce
+
+
+[10/27/2023 21:50] .akira0327
+I think nonce will be produced on off-chain(maybe from backend), what's the nonce making algroithm?
+
+
+[10/27/2023 22:49] newarkbg
+Nonce can just use a random number you haven't used before
+
+
+[10/27/2023 23:19] grobelr
+Why does the remaining balance go to address.length -1 ?
+
+```    uint256 remainingBalance = amount - totalTransferred;
+    if (remainingBalance > 0) {
+      token.safeTransferFrom(benefactor, addresses[addresses.length - 1], remainingBalance);
+    }
+```
+
+
+[10/27/2023 23:26] asui0944
+If the stakedUSDe contract which is the vault doesn't invest users USDe tokens to how will it give rewards
+
+
+[10/27/2023 23:27] asui0944
+And is the rewarder role suppose to be a contract or an EOA controlled by ethena team ?
+
+
+[10/27/2023 23:31] lsaudit
+I think, it has to go somewhere - so it goes to the last address from the list
+
+
+[10/27/2023 23:53] limbooo9
+I think this happens if one of the amountToTransfer in the loop truncated to zero `uint256 amountToTransfer = (amount * ratios[i]) / 10_000;` but it is very hard to occurs!
+
+
+[10/28/2023 00:34] lsaudit
+hey @deHB6  - I've DMd you, please check your DMs in your spare time. Thanks!
+
+
+[10/28/2023 04:22] olanre_waju
+what is the ration in the _transferCollateral all about please @kayin @deHB6
+
+
+[10/28/2023 05:21] viraz4331
+@deHB6 dmed you
+
+
+[10/28/2023 05:23] mike_bello90
+@kayin @deHB6 I wrote you  a question guys in a private thread 😀
+
+
+[10/28/2023 09:20] j4x_98
+Sent you both a dm @kayin @deHB6
+
+
+[10/28/2023 09:42] saint6704
+who has the minter role ?
+Ethena hot wallets?
+
+
+[10/28/2023 10:09] taner2344
+i think whoever admim_role wants
+
+
+[10/28/2023 10:44] saint6704
+That's true but does ethena mints on users behalf who gets the minter role then
+
+
+[10/28/2023 10:45] j4x_98
+As far as I understand it it's also held by ethena, just not with the mutisig
+
+
+[10/28/2023 11:30] titanicauditor
+In ```USDe.sol``` there is a **function  renounceOwnership()** It just returns a revert an error  *** error CantRenounceOwnership().. ***  .. So why it is If it only revert a error?
+
+
+[10/28/2023 11:31] noro9954
+@kayin @deHB6 can you respond ?
+
+
+[10/28/2023 11:36] niser93
+It overrides method of underlying contract
+
+
+[10/28/2023 11:44] proxy1967
+from the docs
+> The primary functions used in this contract is mint() and redeen(). Users who call this contract are all within Ethena. When outside users wishes to mint or redeem, they perform an EIP712 signature based on an offchain price we provided to them. They sign the order and sends it back to Ethena's backend, where we run a series of checks and are the ones who take their signed order and put them on chain.
+> 
+> By design, Ethena will be the only ones calling mint(),redeen() and other functions in this contract.
+
+
+[10/28/2023 11:55] 0xnirlin
+What is route? what purpose it serves while minting?
+
+
+[10/28/2023 11:56] proxy1967
+```solidity
+  struct Route {
+    address[] addresses; // addresses of protocol custodians that will hold to stETH and later transfer to exchanges
+    uint256[] ratios; // ratios of amounts to transfer to custodian addresses, must be 10_000 or 100 bps
+  }
+```
+
+
+[10/28/2023 11:57] proxy1967
+from what I have gathered
+
+
+[10/28/2023 11:58] 0xnirlin
+makes sense, so stheth will be transferred to exchange by custodians and not directly via contracts?
+
+
+[10/28/2023 11:59] 0xnirlin
+Its a manual process?
+
+
+[10/28/2023 12:00] proxy1967
+yes the stETH will not be transferred via contracts. I have read it somewhere but can't remember exactly where, here or the docs
+
+
+[10/28/2023 12:01] 0xnirlin
+:suicide:
+
+{Reactions}
+🤣 
+
+[10/28/2023 12:03] proxy1967
+https://discord.com/channels/810916927919620096/1164939427051733143/1167066093681115157
+
+
+[10/28/2023 12:09] titanicauditor
+Oh. Yeah I understand .. Thanks 😍 \
+
+
+[10/28/2023 12:25] 0xnirlin
+is there any explanation for the orderbits availible?
+
+
+[10/28/2023 12:35] kayin222_67827
+Started a thread.
+
+
+[10/28/2023 12:36] proxy1967
+Not sure if this is correct but I made this to explain it to myself
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/image-971A0.png
+
+{Reactions}
+❤️ 
+
+[10/28/2023 12:37] proxy1967
+Why do we revert if nonce = 0 is used though ?
+
+
+[10/28/2023 12:40] al_qa_qa
+What is the meaning of Routes in `EthenaMinting.sol` ?
+
+
+[10/28/2023 12:49] al_qa_qa
+I got it, they are an addresses that will hold users collaterals.
+
+
+[10/28/2023 13:16] newarkbg
+just to handle single digit wei remainder, we know the total ratio is 10_000 due to `verifyRoute`
+
+
+[10/28/2023 13:17] newarkbg
+USDe rewards are paid into the vault periodically by protocol and earned from stETH yield and funding rate on perp hedges
+
+
+[10/28/2023 13:18] newarkbg
+insurance fund multisig
+
+
+[10/28/2023 13:19] newarkbg
+correct an Ethena hot wallet to enable use in our market maker API
+
+
+[10/28/2023 13:21] j4x_98
+Sent you a dm @deHB6
+
+
+[10/28/2023 14:01] marchev
+USDe token holder is marked as trusted. Is that a mistake?
+
+If that's true then are there any roles in the protocol at all which are *untrusted*?
+
+
+[10/28/2023 14:37] 0xbtk
+@deHB6 @kayin Dmed you in a private thread
+
+
+[10/28/2023 15:13] lsaudit
+hey @kayin  - please check DMs
+
+
+[10/28/2023 16:04] 0xkral
+What is the need for delegation?
+
+
+[10/28/2023 16:11] al_qa_qa
+It allow users (EOAs) to make some smart contracts have control to there tokens.
+
+
+[10/28/2023 16:13] 0xkral
+In that case the signer will be the EOA right?
+
+
+[10/28/2023 16:14] al_qa_qa
+Yes, this is the protocol view for this mechanism in there docs.
+https://ethena-labs.gitbook.io/ethena-labs/10CaMBZwnrLWSUWzLS2a/solution-design/overview/github-overview#user-content-setting-delegated-signer
+
+{Reactions}
+thankyou (2) 
+
+[10/28/2023 16:24] al_qa_qa
+Why are there two addresses in `Order` data type, `benefactor` and `beneficiary`. `beneficiary` takes the money, and `benefactor` is used to validate duplicate orders. I want to know why they used two addresses for this. what is the point?
+
+
+[10/28/2023 16:53] limbooo9
+yah it is ambiguous to me too! I think it only used when redeeming, when calling `_transferToBeneficiary`. while it checked to not be zero in both mint and redeem! hence, the signed Order can be used once and can not be used for both mint and redeem
+
+{Reactions}
+👍 
+
+[10/28/2023 17:06] newarkbg
+what do you mean?
+
+
+[10/28/2023 17:41] marchev
+In the project description at C4, USDe token holder is marked as trusted role. But this could be virtually anyone.
+
+
+[10/28/2023 17:41] marchev
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/image-B2083.png
+
+
+[10/28/2023 17:50] newarkbg
+ah that role is not trusted per se we are just describing what they can do sorry for lack of clarity
+
+
+[10/28/2023 18:43] lsaudit
+@deHB6  - hey, I've DMed you yestardday, could you please check your DMs?
+
+
+[10/28/2023 20:23] noro9954
+@kayin @deHB6 can you check private thread ?
+
+
+[10/28/2023 20:24] trachev
+@deHB6 created private thread
+
+
+[10/28/2023 20:56] henry0226
+@kayin @deHB6 created PT
+
+
+[10/29/2023 07:18] al_qa_qa
+DMed @deHB6
+
+
+[10/29/2023 08:34] 0xdemonnn
+created a PT @kayin @deHB6
+
+
+[10/29/2023 09:28] viraz4331
+@deHB6 I'm assuming the access control related findings won't be valid can you confirm once
+
+
+[10/29/2023 09:38] viraz4331
+@deHB6 also can you please respond to my dm's
+
+
+[10/29/2023 10:18] 0xarshia
+WTF bro it depends the impact it'll create.
+
+
+[10/29/2023 10:21] 0xarshia
+Hey @deHB6  @kayin  I created a PV Thread Please take look at it. Thanks!
+
+
+[10/29/2023 11:52] al_qa_qa
+What is the functionality of getUnvestedAmount in the `StakedUSDe::getUnvestedAmount`?
+
+
+[10/29/2023 12:08] pascal9476
+@kayin send a dm
+
+
+[10/29/2023 12:35] al_qa_qa
+What is the mechanism used to generate additional income when staking USDe? I read that this will occuar through staking, but I cant understand how they will participate in staking protocol like (lidoFinance) through USDe token.
+
+
+[10/29/2023 13:11] oceansky
+they are earning from funding fees provided by perpetual exchanges from shorting ether position and the other earnings is from yields of stEth.
+USDe remains in the contract Staked USDe, this will be the factor in proper distribution of rewards. When you unstake, definitely your USDe  to be receive will increase because of rewards.
+
+{Reactions}
+👍 
+
+[10/29/2023 13:12] oceansky
+if you are familiar with futures trading, you will notice this funding rate.
+Did i answer your query?
+
+
+[10/29/2023 13:32] 0xkral
+What does cooldownAssets and cooldownShares do?
+
+
+[10/29/2023 14:59] 0x_white_devil
+Can somebody explain me how that nouns check happening, Really having a hard time to understand that...
+
+
+[10/29/2023 15:02] d_auditor
+quick question: what does StakedUSDe::transferInRewards() do exactly? I really cant seem to figure it out
+
+
+[10/29/2023 15:09] al_qa_qa
+Yea, this helps a lot. Thanks.
+
+
+[10/29/2023 15:23] radev_sw
+@kayin @deHB6 created private thread
+
+
+[10/29/2023 16:12] j4x_98
+I made a diagram of the minting/redeeming process of USDe. Feel free to check it out / give me some feedback. Hope it can help some of you 🙂 https://twitter.com/J4X_98/status/1718661852891099346
+
+{Reactions}
+❤️ (3) 👍 (2) 
+
+[10/29/2023 16:15] anirruth
+@kayin @deHB6 created a private thread
+
+
+[10/29/2023 16:41] Deleted User
+what tool you used ?
+
+
+[10/29/2023 16:42] j4x_98
+draw.io 🙂
+
+
+[10/29/2023 17:31] 0x_white_devil
+@kayin what exactly mean by protocol's insurance fund
+
+
+[10/29/2023 17:48] mike_bello90
+@kayin  @deHB6   send you a PT question 😄 can you help me please
+
+
+[10/29/2023 18:31] 0xhacksmithh
+@kayin  @deHB6 send a private PT
+
+
+[10/29/2023 20:24] newarkbg
+It's how protocol revenue is paid to stakers
+
+
+[10/29/2023 20:50] olanre_waju
+@deHB6 @kayin  is stUSDe tradeable in open market????????
+
+
+[10/29/2023 21:16] kayin222_67827
+Started a thread.
+
+
+[10/29/2023 21:17] kayin222_67827
+Started a thread.
+
+
+[10/29/2023 21:19] kayin222_67827
+Started a thread.
+
+
+[10/29/2023 21:21] kayin222_67827
+Started a thread.
+
+
+[10/29/2023 21:51] newarkbg
+Initiates unstake when cooldown enabled.  Unstaked immediately and sent to silo, user can claim the USDe when cooldown is up
+
+
+[10/29/2023 22:26] mike_bello90
+I cannot understand the difference between cooldownAssets and cooldownShares when is supposed to be used each of that functions? @deHB6 @kayin
+
+
+[10/29/2023 22:44] 0xstalin
+if coolDown is active, redeem & withdraw functions won't work, only the cooldownShares or cooldownAssets, those functions would then be used when the stakers want to unstake stUSDe for USDe
+
+{Reactions}
+👌🏻 
+
+[10/29/2023 23:22] mike_bello90
+the user can use both functions cooldownAssets and cooldownShares interchangeably when the cooldown is active?
+
+
+[10/29/2023 23:23] mike_bello90
+or cooldownAssets should be used in a  specific situation and cooldownShares in another?
+
+
+[10/29/2023 23:57] oceansky
+they are basically the same, the difference is in the input (shares stUSDe) and the output (assets USDe), using interchangeably, depending on the user wants.
+
+{Reactions}
+👌🏻 (3) 
+
+[10/30/2023 00:12] mike_bello90
+ok, thank you guys! :hi5:
+
+
+[10/30/2023 08:06] al_qa_qa
+Created private thread @kayin  @deHB6
+
+
+[10/30/2023 09:43] topmark1
+please sent a DM @deHB6 @kayin
+
+
+[10/30/2023 10:01] 0xprinc
+sent a DM @deHB6 @kayin 
+please reply
+
+
+[10/30/2023 10:07] 0xprinc
+is `_custodianAddress` contract present anywhere i am unable to find...?
+
+
+[10/30/2023 10:08] al_qa_qa
+In `EtheneMinting::L69` (https://github.com/code-423n4/2023-10-ethena/blob/main/contracts/EthenaMinting.sol#L69)
+
+
+[10/30/2023 10:11] 0xprinc
+Is there also written any code for them?
+
+
+[10/30/2023 10:11] 0xprinc
+maybe custodianAddress.sol
+
+
+[10/30/2023 10:11] 0xprinc
+?
+
+
+[10/30/2023 10:12] proxy1967
+https://discord.com/channels/810916927919620096/1164939427051733143/1167066093681115157
+
+
+[10/30/2023 10:13] proxy1967
+https://discord.com/channels/810916927919620096/1167070324760789012/1167070734938554499
+
+
+[10/30/2023 10:15] asui0944
+If I'm not mistaken the assets from the custodian wallets has to be sent back to the ethenaMinting contract before the minter calls redeem right?
+
+
+[10/30/2023 10:28] 0xprinc
+yup, but some of the assets are in the ethenaminting always
+~200k as stated in the docs
+
+{Reactions}
+👍 
+
+[10/30/2023 10:34] al_qa_qa
+No, just two functions to add or delete a custodianAddress
+
+
+[10/30/2023 11:44] asui0944
+Can anyone help why github permalink highlighting doesn't work. We select the line and click the line number on the left side but that doesn't with mine anymore
+
+
+[10/30/2023 11:45] chainsnake
+did you try with shift+click?
+
+{Reactions}
+👍 
+
+[10/30/2023 11:46] asui0944
+Ah this works 
+Thanks!!
+
+{Reactions}
+🙌 
+
+[10/30/2023 13:38] qpzm
+How do nonces increment in EthenaMinting? Is it for metatx? It may be helpful if you give some example.
+
+
+[10/30/2023 16:49] j4x_98
+Am i correct to assume all findings inside the public report of Pashov to be out of scope?
+
+
+[10/30/2023 16:50] newarkbg
+yes
+
+{Reactions}
+👍 (2) 
+
+[10/30/2023 18:00] mylifechangefast.eth
+@kayin is USDe a standard token?
+
+
+[10/30/2023 18:14] lsaudit
+what audit report? There's no report linked in `Automated Findings / Publicly Known Issues` - according to C4 rules, only issues mentioned there are out of scope
+
+{Reactions}
+10_10 
+
+[10/30/2023 18:17] shubh0412
+https://github.com/pashov/audits/blob/master/solo/Ethena-security-review.md
+
+{Embed}
+https://github.com/pashov/audits/blob/master/solo/Ethena-security-review.md
+audits/solo/Ethena-security-review.md at master · pashov/audits
+Contribute to pashov/audits development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/audits-A51E8
+
+
+[10/30/2023 18:20] lsaudit
+where did you get that link, it's not in the contest description
+
+
+[10/30/2023 18:20] lsaudit
+anyway, it's not in the known issues section - so - it should be treated as not-known
+
+
+[10/30/2023 18:22] shubh0412
+There were already mentions of it in chats early on 🤷🏻
+
+
+[10/30/2023 18:23] lsaudit
+not everyone reads discord tbh, if something is out of scope - it should be clearly defined in the out-of-scope section in the contest description
+
+
+[10/30/2023 18:24] shubh0412
+Sponsor has already said these are known.
+I guess its time to use the `withdraw finding` & `update issue` button on the C4 page 😂
+
+{Reactions}
+😆 
+
+[10/30/2023 18:24] lsaudit
+not to mention, that honestly, the communication during this contest doesn't work as smoothly as with others. I've asked for DM 3 times (two separate admins) - noone of them checked DMs till now. If there's no communication, why should I follow discord channel
+
+{Reactions}
+👀 
+
+[10/30/2023 18:26] shubh0412
+https://tenor.com/view/mental-health-mental-health-crisis-mental-health-resources-to-do-breathing-exercise-gif-25663967
+
+{Embed}
+https://tenor.com/view/mental-health-mental-health-crisis-mental-health-resources-to-do-breathing-exercise-gif-25663967
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/mental-health-mental-health-crisis-E620E.png
+
+
+[10/30/2023 18:27] lsaudit
+i'm not complaining, just sharing my observations 😉
+
+{Reactions}
+🫡 (3) 
+
+[10/30/2023 19:02] 0xstalin
+Either way, those are low sevs, if some intelligent warden copy-paraphrase and submit those issues, they should be graded as low 😮‍💨
+
+{Reactions}
+💯 (3) 
+
+[10/30/2023 19:05] mylifechangefast.eth
+when was this audit done?
+
+
+[10/30/2023 19:06] mylifechangefast.eth
+asin br, lmao
+
+
+[10/30/2023 19:07] qwertypark
+It has been added to the gitbook https://ethena-labs.gitbook.io/ethena-labs/10CaMBZwnrLWSUWzLS2a/resources/audits
+
+
+[10/30/2023 19:09] mylifechangefast.eth
+I feel you br. Communication is key, Maybe they feel there is nothing to ask becuase the Contract looks easy and understable
+
+{Reactions}
+💯 
+
+[10/30/2023 19:09] mylifechangefast.eth
+But they should do so to answer our questions.
+
+
+[10/30/2023 19:11] lsaudit
+nah it's not a mandatory to read the whole documentation to participate in the contest. When contest starts there are some sections on the contest page: 1. Scope 2. Known issues 3. Out of scope. If any of these do not contain a link to some private audit, then findings from that private audit should be treat as in-scope
+
+
+[10/30/2023 19:14] lsaudit
+i just read that link - it seems it's all QA, but nonetheless - rules are rules. `Known issues` describes all the known issues which are out of scope. If there's issue from some private audit which is not mentioned there - it should be treated as valid - since it was not mentioned in `Known issues`
+
+
+[10/30/2023 19:15] lsaudit
+The same goes for some weird ERC-20 tokens. If contest doesn not define what kind of ERC20 tokens they accept, and someone submit an issue related to some fee-on-transfer or rebasing token - it's still treated as a valid finding (but downgraded to QA)
+
+{Reactions}
+✅ (2) 
+
+[10/30/2023 19:16] 0xstalin
+This is true, so, help to save some time for the judge and submit those issues in the qa report
+
+{Reactions}
+👍 
+
+[10/30/2023 19:20] mylifechangefast.eth
+Okay, assuming it was 0Z that did the past audit it that a private audit and would it be in-scope it it was applied to Ethena
+
+
+[10/30/2023 19:24] mylifechangefast.eth
+Lol my QA is just full I need to withdraw some😆
+
+
+[10/30/2023 19:35] asui0944
+anybody with any H/M ? 😅
+
+
+[10/30/2023 19:37] mylifechangefast.eth
+You didn't see any
+
+
+[10/30/2023 19:38] mylifechangefast.eth
+This Ethena should be judge quickly it not something they should waste on right guys?
+
+
+[10/30/2023 19:41] j4x_98
+I'm praying for judging like ENS haha
+
+
+[10/30/2023 19:42] j4x_98
+That went on at light speed
+
+{Reactions}
+👍 (2) 
+
+[10/30/2023 20:01] mylifechangefast.eth
+didn't do that
+
+
+[10/30/2023 20:01] asui0944
+I was writing my analysis and the contest ended on me  :4739_Skeletor:
+
+{Reactions}
+😆 (2) 
+
+[10/30/2023 20:01] mylifechangefast.eth
+was the codebase easy?
+
+
+[10/30/2023 20:01] emerald7017
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/eth-3D006.png
+
+
+[10/30/2023 20:01] j4x_98
+Yeah super simple and also very well tested so not a lot to find
+
+
+[10/30/2023 20:01] mylifechangefast.eth
+Funny man
+
+
+[10/30/2023 20:02] C4
+**🚨 AUDIT ALERT**
+
+@🐺wardens The **Ethena Labs** audit is now closed! Huge thanks to everyone who participated 🔍, whether you submitted a finding or not.
+
+What's next: The sponsor team and judge will review the findings over the next couple of weeks. Keep an eye on #📢announcements for regular updates on how the audit is progressing through awarding 🤑🏆, judging 🧑‍⚖️ and reporting 📜. Feel free to ping a Contest-Admin if you have questions along the way!
+
+
+[10/30/2023 20:02] mylifechangefast.eth
+Oh nice so which is simple ENS or Ethena, can you tell?
+
+
+[10/30/2023 20:02] asui0944
+im still waiting for the report to be public to see what was the finding or can you dm me please
+
+
+[10/30/2023 20:02] mylifechangefast.eth
+Judging should start now, lol
+
+
+[10/30/2023 20:02] j4x_98
+I'd say ENS was way smaller codebase, but I also had the feeling here that it was pretty well hardened
+
+{Reactions}
+chefskiss 
+
+[10/30/2023 20:02] al_qa_qa
+4 days reading the hole docs, searching for any bug, but failed.
+
+The problem is that most of the heavy logic is done off-chain, transfer staking rewards, approving minting and redeeming, admin controls the process. In addition to be previously audited by two companies and one solo.
+
+Finding even a medium is difficult, because of the reasons I mentioned, or at least this is my opinion.
+
+If someone found an easy, he will collect all the bucks, good luck guys in the next audit.
+
+
+[10/30/2023 20:03] j4x_98
+I also don't know which of my findigns got accepted i reported multiple med and one was ok as it seems haha
+
+
+[10/30/2023 20:04] j4x_98
+Yeah I'm also looking forwards to the results on this, especially as it was already tested by pashov without any HM, we'll see if there are any valid ones 🤔
+
+
+[10/30/2023 20:04] mylifechangefast.eth
+on ENS or which?
+
+
+[10/30/2023 20:04] j4x_98
+Yes
+
+
+[10/30/2023 20:05] mylifechangefast.eth
+Was ENS also audited by Pashov
+
+
+[10/30/2023 20:05] j4x_98
+No only this
+
+
+[10/30/2023 20:05] mylifechangefast.eth
+Oh
+
+
+[10/30/2023 20:05] j4x_98
+But ENS was also audited by some big company before afaik
+
+
+[10/30/2023 20:05] j4x_98
+So that's no guarantee that there are no vulns haha
+
+
+[10/30/2023 20:08] mylifechangefast.eth
+And there  was no HM found by Pashov
+
+
+[10/30/2023 20:08] j4x_98
+At least according to his report
+
+{Reactions}
+✅ 
+
+[10/30/2023 20:08] mylifechangefast.eth
+@J4X I know you would find High👀
+
+
+[10/30/2023 20:08] nethoxa
+true AF
+
+
+[10/30/2023 20:08] j4x_98
+Nah unfortunately not haha
+
+
+[10/30/2023 20:08] mylifechangefast.eth
+Fr?
+
+
+[10/30/2023 20:09] mylifechangefast.eth
+I'm doomed😆
+
+
+[10/30/2023 20:09] j4x_98
+No didn't find any high on this contest 🙂
+
+
+[10/30/2023 20:09] asui0944
+how many submissions for this? anyone with backstage role?
+
+
+[10/30/2023 20:09] nethoxa
+9 minutes, new record
+
+{Reactions}
+🤔 (2) 😂 (2) 
+
+[10/30/2023 20:09] mylifechangefast.eth
+Damn it what did I see in that codebase was another thing, lol
+
+
+[10/30/2023 20:10] j4x_98
+But I'm also a beginner, so maybe someone else found one 🤷‍♂️
+
+
+[10/30/2023 20:10] mylifechangefast.eth
+Hmm not true..youve been here before me
+
+
+[10/30/2023 20:11] mylifechangefast.eth
+what do this mean?
+
+
+[10/30/2023 20:11] j4x_98
+But not too long, this is my 2nd month 🙂
+
+
+[10/30/2023 20:11] mylifechangefast.eth
+Oh oh I see
+
+
+[10/30/2023 20:11] mylifechangefast.eth
+Me too
+
+You are lying though
+
+{Reactions}
+😆 (2) 
+
+[10/30/2023 20:12] mylifechangefast.eth
+In your dm @J4X
+
+
+[10/30/2023 20:12] nethoxa
+He asked about subm number 9 minutes after the contest ended
+
+{Reactions}
+😂 
+
+[10/30/2023 20:12] mylifechangefast.eth
+oh okay
+
+
+[10/30/2023 20:13] j4x_98
+Nah man haha I just did CTFs before 😅
+
+
+[10/30/2023 20:13] mylifechangefast.eth
+Oh oh okay
+
+
+[10/30/2023 20:13] mylifechangefast.eth
+How was it?
+
+
+[10/30/2023 20:13] mylifechangefast.eth
+Harddddd
+
+
+[10/30/2023 20:14] mylifechangefast.eth
+right?
+
+
+[10/30/2023 20:14] j4x_98
+I liked it, but lets just talk in dm so we don't spam this channel
+
+{Reactions}
+🫡 
+
+[10/30/2023 20:14] asui0944
+how much minutes usually for other contests 😂 😂
+
+{Reactions}
+🤣 
+
+[10/30/2023 20:14] mylifechangefast.eth
+15👀
+
+
+[10/30/2023 20:20] nethoxa
+I dunno, but I know there is some time between the contest ends and the private repo with the findings is made.
+
+
+[10/30/2023 20:25] sovaslava9
+already 26 min spent.. but repo with findings havent created yet
+
+
+[10/30/2023 20:28] mike_bello90
+I might have found one, who knows 😄
+
+
+[10/30/2023 20:35] 0xstalin
+The longer it takes, the more findings 😮‍💨
+
+
+[10/30/2023 20:40] j4x_98
+Solodit ctrl+c, ctrl+v wardens went all in again prob
+
+
+[10/30/2023 20:41] mike_bello90
+I will do a 1 second for the next one jajaja 😄
+
+
+[10/30/2023 21:14] fktworld
+Is there a recommended platform?
+
+
+[10/30/2023 21:20] mylifechangefast.eth
+SENT A DM
+
+{Reactions}
+👌🏻 
+
+[10/30/2023 21:21] mylifechangefast.eth
+wahala
+
+
+[10/30/2023 21:21] j4x_98
+I started with etherenaut, then moved on to QuillCTF as well as DamnVulnerableDefi. And I tried to play all the solidity challenges by the CTFs on the weekend on CTFtime
+
+
+[10/30/2023 21:22] fktworld
+Thank you. I’m reading your blog. It‘s great.
+
+
+[10/30/2023 21:36] j4x_98
+Thank you 😊 have not uploaded for some time but will try to do some new writeups when I have time again 😁
+
+
+[10/30/2023 21:47] pascal9476
+Wahala ?
+I sent a dm my bro 😹😹
+
+
+[10/30/2023 21:48] pascal9476
+Or just accept fr
+
+
+[10/30/2023 23:15] tamayonft
+735
+
+{Reactions}
+🤯 (4) 
+
+[10/30/2023 23:16] oceansky
+Thank you to the sponsors @kayin and @deHB6 , learned a lot in your protocol security design.
+
+
+[10/31/2023 10:04] debofx
+Crypto Zombie is good as well.
+
+
+[11/06/2023 15:43] lsaudit
+dailywaren says escalation period has ended. Any chance that result comes this week?
+
+
+[11/06/2023 15:58] j4x_98
+I think you mixed something up there according to dailywarden it's still in judging
+
+{Reactions}
+👍 
+
+[11/06/2023 16:14] lsaudit
+upps, you're right, asking at wrong channel, sorry about it 😉
+
+
+[11/13/2023 11:38] cryptothemex
+how can we see feedback on submissions? and what is escalation? and how to do it?
+
+
+[11/13/2023 12:43] lourenslinde
+Once the report is made public you can see your submissions with feedback/comments.
+
+The Escalations period in C4 is called Post Judging QA. 
+
+When Post Judging QA opens wardens who have backstage access have a period of time (usually 48 hours, sometimes longer) in which they can comment on issues or raise any valid concerns with the judge before the awards are announced.
+
+
+[11/13/2023 17:01] cryptothemex
+thanks for info. much appriciated
+
+{Reactions}
+🍻 (2) 
+
+[11/18/2023 10:02] mosharaf
+https://tenor.com/view/popcat-wen-gif-23885304
+
+{Embed}
+https://tenor.com/view/popcat-wen-gif-23885304
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/popcat-wen-0C105.png
+
+{Reactions}
+😂 (12) 
+
+[11/18/2023 10:02] mylifechangefast.eth
+lol
+
+
+[11/20/2023 11:39] _paperparachute
+https://tenor.com/view/soon-hamster-gif-4508050
+
+{Embed}
+https://tenor.com/view/soon-hamster-gif-4508050
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/soon-hamster-D08BD.png
+
+{Reactions}
+code4rena (8) 
+
+[11/20/2023 11:41] coffiasd
+:nice:
+
+
+[11/21/2023 16:09] lsaudit
+any chance the results will be coming this week?
+
+
+[11/21/2023 16:37] shubh0412
+Most probably
+
+
+[11/21/2023 16:40] oxtenma
+Soon means within 48 hours.
+
+{Reactions}
+😂 (6) code4rena 
+
+[11/21/2023 17:20] unique0x0
+https://tenor.com/view/waiting-titanic-gif-25999423
+
+{Embed}
+https://tenor.com/view/waiting-titanic-gif-25999423
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/waiting-titanic-965AB.png
+
+
+[11/23/2023 09:41] _paperparachute
+The "soon" was a lie guys, I'm sorry! Looks like this one will be wrapped up early next week now 🙂
+
+{Reactions}
+🫡 (11) ☹️ (5) 👍 
+
+[11/23/2023 10:52] shubh0412
+https://tenor.com/view/tv-shows-annoyed-irritated-the-big-bang-theory-sheldon-cooper-gif-14859836
+
+{Embed}
+https://tenor.com/view/tv-shows-annoyed-irritated-the-big-bang-theory-sheldon-cooper-gif-14859836
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/tv-shows-annoyed-DB3F9.png
+
+{Reactions}
+😅 
+
+[11/23/2023 15:20] 0xstalin
+https://tenor.com/view/how-dare-you-screaming-lady-rage-angry-gif-15730816
+
+{Embed}
+https://tenor.com/view/how-dare-you-screaming-lady-rage-angry-gif-15730816
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/how-dare-you-screaming-lady-A2003.png
+
+
+[11/23/2023 15:20] 0xstalin
+https://tenor.com/view/dudu-cry-hay-nako-reika-dudu-crying-gif-2717069320121206561
+
+{Embed}
+https://tenor.com/view/dudu-cry-hay-nako-reika-dudu-crying-gif-2717069320121206561
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/dudu-cry-hay-nako-reika-64469.png
+
+
+[11/24/2023 11:43] mylifechangefast.eth
+stop crying xd
+
+
+[11/25/2023 14:35] coffiasd
+:hearteyesrobot:
+
+
+[11/26/2023 07:32] saint6704
+:4739_Skeletor:
+
+
+[11/27/2023 08:15] marchev
+https://tenor.com/view/where-you-at-gif-21177622
+
+{Embed}
+https://tenor.com/view/where-you-at-gif-21177622
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/where-you-B9BEE.png
+
+{Reactions}
+😂 (13) 
+
+[11/27/2023 21:31] mosharaf
+https://tenor.com/view/kid-thinking-sit-bored-couch-gif-17483531
+
+{Embed}
+https://tenor.com/view/kid-thinking-sit-bored-couch-gif-17483531
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/kid-thinking-BFE96.png
+
+
+[11/28/2023 00:42] mylifechangefast.eth
+You go wait tire
+
+{Reactions}
+🇳🇬 
+
+[11/28/2023 02:08] mylifechangefast.eth
+@0xMosh  I can't DM you
+
+
+[11/28/2023 12:45] 0xaadhi
+Its coming? Profiles got updated with ethena logo!
+
+{Reactions}
+🔥 (2) 🕵️‍♂️ (2) 
+
+[11/28/2023 12:57] shubh0412
+https://tenor.com/view/counting-money-shmoney-gif-24675954
+
+{Embed}
+https://tenor.com/view/counting-money-shmoney-gif-24675954
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/counting-money-B7EC2.png
+
+{Reactions}
+😂 (7) 
+
+[11/28/2023 14:56] young09778
+i can’t see the logo in the profile. Where could I find it.
+
+
+[11/28/2023 15:13] j4x_98
+Will probably be coming today if they updated it 🙏
+
+
+[11/28/2023 15:23] josephdara
+:4739_Skeletor:
+
+{Reactions}
+4739_Skeletor (19) 
+
+[11/28/2023 22:25] thebrittfactor
+🤑 🎉  Awards for **Ethena Labs**:
+
+$2,133.16 USDC » peanuts 
+$1,957.12 USDC » @Madalad 
+$1,866.36 USDC » @adeolu 
+$1,598.50 USDC » @Shubham 
+$1,587.06 USDC » @josephdara 
+$1,555.84 USDC » Eeyore 
+$1,436.70 USDC » @Mike_Bello 
+$1,436.70 USDC » @jasonxiale 
+$805.88 USDC » @Yanchuan 
+$681.07 USDC » @ayden 
+$639.56 USDC » @mert_eren. 
+$524.95 USDC » @critical-or-high 
+$524.95 USDC » 0xWaitress 
+$524.95 USDC » @cartlex_ 
+$524.95 USDC » @twcctop 
+$524.95 USDC » @pontifex 
+$520.42 USDC » @ciphermarco 
+$520.42 USDC » @trachev 
+$520.42 USDC » @d3e4 
+$297.65 USDC » 0xmystery 
+$285.46 USDC » @HChang26 
+$285.46 USDC » @Arz 
+$280.94 USDC » RamenPeople (@kimchi and @wasabi)
+$280.94 USDC » @Limbooo 
+$249.50 USDC » @SovaSlava 
+$220.50 USDC » @lsaudit 
+$218.85 USDC » @J4X 
+$214.86 USDC » @squeaky_cactus 
+$176.44 USDC » @hunter_w3b 
+$172.77 USDC » Udsen 
+$166.32 USDC » @dirk_y 
+$166.32 USDC » 0xAlix2 (@a_kalout and @ali_shehab)
+$166.32 USDC » @ast3ros 
+$166.32 USDC » @btk 
+$166.32 USDC » pep7siup 
+$166.32 USDC » deepkin 
+$166.32 USDC » @Kaysoft 
+$161.80 USDC » Krace 
+$161.80 USDC » @Cosine 
+$161.80 USDC » @Oxsadeeq
+$130.12 USDC » @0xpiken 
+$130.12 USDC » @castle_chain 
+$130.12 USDC » @0xAadi 
+$126.33 USDC » @radev_sw 
+$123.66 USDC » @degensec.eth
+$123.66 USDC » @lanrebayode77 
+$123.66 USDC » @tnquanghuy0512
+$123.66 USDC » @sorryNotsorry 
+$123.66 USDC » Team_Rocket (@AlexCzm and @EllipticPoint)
+$123.66 USDC » @ge6a
+
+{Reactions}
+chefskiss (2) 🥳 
+
+[11/28/2023 22:25] thebrittfactor
+$119.14 USDC » @Beosin 
+$119.14 USDC » SpicyMeatball 
+$119.14 USDC » KIntern_NA (@TrungOre and @duc)
+$108.13 USDC » @0xVolcano 
+$99.71 USDC » @ICP 
+$99.71 USDC » @oakcobalt 
+$95.19 USDC » @Sathish9098 
+$93.26 USDC » @ZanyBonzy 
+$93.26 USDC » @Al-Qa-qa 
+$93.26 USDC » @Kral01 
+$88.73 USDC » @invitedtea 
+$88.73 USDC » @catellatech 
+$88.73 USDC » @Albahaca 
+$88.73 USDC » fouzantanveer 
+$88.73 USDC » @0xweb3boy 
+$88.73 USDC » @0xSmartContract 
+$83.18 USDC » @NiSeR 
+$83.18 USDC » @0xAnah 
+$25.21 USDC » @JCK 
+$20.69 USDC » @K42 Ψ 
+$18.76 USDC » @Bauchibred 
+$14.24 USDC » digitizeworx 
+$14.24 USDC » clara 
+$14.24 USDC » jauvany 
+$14.24 USDC » @xiao 
+$14.24 USDC » @Bulletprime 
+$14.24 USDC » D_Auditor 
+$10.98 USDC » @0xhacksmithh 
+$10.98 USDC » @nuthan2x 
+$10.98 USDC » @arjun16 
+$10.98 USDC » ThreeSigma (@0x73696d616f, @Carolina, @EduCatarino and @SolidityDev99)
+$10.98 USDC » @0x11singh99 
+$6.46 USDC » ybansal2403 
+$6.46 USDC » @naman1778 
+$6.46 USDC » @evmboi32 
+$6.46 USDC » @SM3_SS 
+$6.46 USDC » @yashgoel72 
+$6.46 USDC » @0xgrbr 
+$6.46 USDC » @Rolezn 
+$6.46 USDC » @aslanbek 
+$6.46 USDC » @4N0NX 
+$6.46 USDC » @thekmj 
+$6.46 USDC » 0xta 
+$6.46 USDC » @unique 
+$6.46 USDC » @fiending 
+$6.46 USDC » 0xhex 
+$6.46 USDC » @Raihan 
+$6.46 USDC » shamsulhaq123 
+$6.46 USDC » @petrichor🦖 
+$6.46 USDC » @tabriz 
+$6.46 USDC » @SAQ
+
+
+[11/28/2023 22:25] thebrittfactor
+$4.52 USDC » Bughunter101 
+$4.52 USDC » 0x_Scar 
+$4.52 USDC » @twicek 
+$4.52 USDC » @rvierdiiev 
+$4.52 USDC » DarkTower (@Gelato_ST, @Kenzo, @0xrex and @Maroutis)
+$4.52 USDC » @max10afternoon 
+$4.52 USDC » @foxb868 
+$4.52 USDC » Strausses 
+$4.52 USDC » @marchev 
+$4.52 USDC » @ptsanev 
+$4.52 USDC » @zhaojie 
+$4.52 USDC » @PENGUN 
+$4.52 USDC » @csanuragjain 
+$4.52 USDC » Topmark 
+$4.52 USDC » almurhasan 
+$4.52 USDC » @Zach_166 
+$4.52 USDC » @young 
+$4.52 USDC » @Walter 
+$4.52 USDC » @matrix_0wl 
+$4.52 USDC » rokinot 
+$4.52 USDC » @Fitro 
+$4.52 USDC » @0xStalin 
+$4.52 USDC » @Oxchsyston 
+$4.52 USDC » @chainsnake 
+$4.52 USDC » @ziyou- 
+$4.52 USDC » @Proxy 
+$4.52 USDC » @Noro 
+$4.52 USDC » @larsson 
+$4.52 USDC » @kkkmmmsk 
+$4.52 USDC » cryptonue 
+$4.52 USDC » @cccz 
+$4.52 USDC » @pipidu83 
+$4.52 USDC » Imlazy0ne 
+$4.52 USDC » @supersizer0x 
+$4.52 USDC » @0xG0P1 
+$4.52 USDC » @BeliSesir 
+$4.52 USDC » @codynhat 
+$4.52 USDC » @asui 
+$4.52 USDC » @Rotcivegaf 
+$4.52 USDC » @PASCAL 
+$4.52 USDC » @Breeje 
+$4.52 USDC » Avci 
+$4.52 USDC » @adam-idarrha 
+$4.52 USDC » @erebus 
+$4.52 USDC » @qpzm
+
+
+[11/28/2023 22:26] thebrittfactor
+$4.52 USDC » 0xhunter
+
+🏁 Findings summary
+-------------------------------------
+High risk findings: 0 unique (0 total)
+Med risk findings: 4 unique (63 total)
+Gas reports: 41 (Best: 0xVolcano)
+QA reports: 98 (Best: 0xmystery)
+Advanced analysis reports: 25 (Best: radev_sw)
+
+Awards will be distributed on Polygon within the next week. Congratulations all!  💸 💸 💸
+
+*Note: If you participated in this audit and don’t see your name on this list, please wait until the report is published and the findings repo is made public to check on your submissions.*
+
+{Reactions}
+🚀 
+
+[11/28/2023 22:38] pascal9476
+My first tag more to come
+
+{Reactions}
+🐐 (2) 🔥 
+
+[11/28/2023 22:45] madalad
+my first top 5 :nice:
+
+{Reactions}
+🔥 (3) 👏 
+
+[11/28/2023 23:09] josephdara
+GG
+
+
+[11/28/2023 23:31] josephdara
+Congrats @adeolu
+
+
+[11/28/2023 23:32] adeolu
+Thanks bro. Congratulations to you too! Nice find.
+
+
+[11/28/2023 23:33] pascal9476
+Una Dey hot
+
+
+[11/28/2023 23:42] josephdara
+Thanks Man
+
+{Reactions}
+❤️ 
+
+[11/28/2023 23:49] young09778
+Nice, my first tag is coming
+
+
+[11/29/2023 00:13] coffiasd
+finally to be top 10 :10_10:
+
+
+[11/29/2023 00:20] olanre_waju
+congrats @adeolu  and @josephdara
+
+{Reactions}
+🫡 (2) 
+
+[11/29/2023 00:22] adeolu
+thanks mate
+
+
+[11/29/2023 00:26] josephdara
+Thanks
+
+
+[11/29/2023 00:29] young09778
+I noticed that in the result, the `total` doesn't equla to the `sum of High, Med, and Gas`. Anyone knows why?
+
+
+[11/29/2023 00:29] 0xsimeon
+Congratulations @josephdara  and @adeolu
+
+{Reactions}
+🫡 (2) 
+
+[11/29/2023 00:35] coffiasd
+maybe the data is not updated
+
+{Reactions}
+10_10 
+
+[11/29/2023 01:36] mike_bello90
+Finally, I got something interesting jeje 😄 I gonna eat delicious tacos the whole week Jajaja 😄
+
+{Reactions}
+❤️ (3) 
+
+[11/29/2023 01:39] mike_bello90
+Congrats to all the winners! 🎉 🎉 🎉 🥳
+
+
+[11/29/2023 02:08] liveactionllamac4
+Don't forget the QA and analysis award pools. 🙂
+
+{Reactions}
+😂 
+
+[11/29/2023 02:42] jauvany
+Ok @jauvany
+
+
+[11/29/2023 02:59] shubh0412
+First time in the Top 5 🔥 🔥
+
+{Reactions}
+👏 (10) 
+
+[11/29/2023 05:26] mobinpou6
+where can find findings reports https://github.com/code-423n4/2023-10-ethena-findings ?
+
+
+[11/29/2023 06:02] mylifechangefast.eth
+@josephdara baba dey hot @adeolu
+
+{Reactions}
+🔥 (2) 
+
+[11/29/2023 06:11] mylifechangefast.eth
+Is like the OGs didn't participate in this contest
+
+
+[11/29/2023 07:29] wasabi_26768
+Where can we see our submissions with comment? I wonder why High was rejected.
+
+
+[11/29/2023 07:32] mylifechangefast.eth
+Yours @wasabi
+
+
+[11/29/2023 07:38] devabdee
+you need backstage role for that or wait for the final report
+
+
+[11/29/2023 07:40] ivanfitro
+First time award in c4🥳
+
+
+[11/29/2023 07:42] taner2344
+Congratulations to everyone who is participated. Is there anyone who gets award without writing test ?  👀
+
+
+[11/29/2023 07:52] mylifechangefast.eth
+👀
+
+
+[11/29/2023 07:52] wasabi_26768
+how can I get that mysterious role?
+
+{Reactions}
+cyberheart 
+
+[11/29/2023 08:04] oxtenma
+https://docs.code4rena.com/roles/certified-contributors/backstage-wardens
+
+{Embed}
+https://docs.code4rena.com/roles/certified-contributors/backstage-wardens
++Backstage wardens
+
+{Reactions}
+☝️ 👍 
+
+[11/29/2023 08:21] vinyldavyl
+chii @adeolu @josephdara 
+top boy congrats🔥🔥🔥
+
+{Reactions}
+❤️ 
+
+[11/29/2023 08:44] young09778
+First time participation. Will we be able to see our submission and feedbacks? A little wonder why some findings are rejected.
+
+
+[11/29/2023 09:21] monrel
+@🦙 liveactionllama | C4 is there a reason why judge did not take a look a  comment I made during PJQA? https://github.com/code-423n4/2023-10-ethena-findings/issues/601
+
+
+[11/29/2023 09:26] young09778
+Hi. Do we need some roles to access this? It seems 404 to me~
+
+
+[11/29/2023 09:27] monrel
+yes, its backstage only.
+
+
+[11/29/2023 09:27] young09778
+Got it. Thanks. Will I be able to see my submission later on this?
+
+
+[11/29/2023 09:27] monrel
+yes, when report is out or when you get access to the backstage role.
+
+{Reactions}
+10_10 
+
+[11/29/2023 15:55] wasabi_26768
+?
+
+
+[11/29/2023 15:55] wasabi_26768
+Ok, so do you become Certified C4 contributor ?
+
+
+[11/29/2023 15:56] oxtenma
+No working on it.
+
+
+[11/29/2023 17:17] almurhasan
+🙂
+
+
+[11/30/2023 07:50] wasabi_26768
+What do you mean?
+
+
+[11/30/2023 08:03] oxtenma
+read this.
+
+
+[11/30/2023 14:23] wasabi_26768
+I did
+
+
+[11/30/2023 14:25] wasabi_26768
+Also, why does someone has Total greater than sum of other columns?
+
+
+[11/30/2023 15:23] _paperparachute
+What is this referring to?
+
+
+[11/30/2023 15:48] kimchi_the_dog
+@PaperParachute | C4 I believe this
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - ethena-oct24 [1164939427051733143].txt_Files/Screenshot_2023-11-30_at_16.48.00-BB75C.png
+
+
+[11/30/2023 15:50] 0xsorrynotsorry
+QA reports are not included in the table
+
+
+[11/30/2023 16:17] kimchi_the_dog
+ok, but why does the person have a total of 5 if they reported 3 mediums? did they send 2 analyses?
+
+
+[11/30/2023 16:20] 0xsorrynotsorry
+My bad, QA reports are not shown as a separate column but they're included in the total.
+So yes, 3 mediums + 2 QA
+
+
+[11/30/2023 16:23] kimchi_the_dog
+Ok, so if I don't get additional points in the total for the analysis (even though I sent it), it means that it didn't meet the criteria, right?
+
+
+[11/30/2023 16:25] 0xsorrynotsorry
+Analysis reports are not included in the table either. Not even on total column
+
+
+[11/30/2023 20:31] ivanfitro
+the rewards are payed with USDT?
+
+
+[11/30/2023 21:48] wasabi_26768
+You just said that they are included in Total 🙂
+
+
+[12/01/2023 04:33] 0xsorrynotsorry
+That's for the QA report. Analysis report is not included
+
+{Reactions}
+👍 
+
+[12/01/2023 11:45] wasabi_26768
+Can you send more Analysis reports than 1?
+
+
+[12/04/2023 12:38] young09778
+Hi, does anyone know when will the findings get published?
+
+
+[12/04/2023 15:13] _paperparachute
+normally 1-2 weeks from awards
+
+
+[02/24/2024 02:45] itsmetechjay
+ℹ️ This channel is pending archive.  As a result, any private threads will be permanently deleted on Saturday, 02 March 2024. Please make sure to grab anything you might need from those before then.
+
+
+[02/29/2024 22:34] itsmetechjay
+ℹ️ Reminder: this channel will be deleted in 24 hours.
+
+
+==============================================================
+Exported 446 message(s)
+==============================================================
